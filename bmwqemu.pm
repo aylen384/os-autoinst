@@ -10,7 +10,7 @@ use File::Basename;
 eval {require Algorithm::Line::Bresenham;};
 use Exporter;
 use ocr;
-use ppm;
+use cv;
 use threads;
 use threads::shared;
 use POSIX; 
@@ -258,9 +258,9 @@ sub hashrect($$$) {
 	my @result;
 	return unless $ppm2;
 	if($flags=~m/r/) {$ppm2->replacerect(0,137,13,15);} # mask out text
-	if($flags=~m/c/) {push(@result, [Digest::MD5::md5_hex($ppm2->{data}),$rect,$flags])} # extra coloured version hash
+	if($flags=~m/c/) {push(@result, [$ppm2->checksum(),$rect,$flags])} # extra coloured version hash
 	if($flags=~m/t/) {$ppm2->threshold(0x80);} # black/white => drop most background
-	return (@result,[Digest::MD5::md5_hex($ppm2->{data}),$rect,$flags]);
+	return (@result,[$ppm2->checksum(),$rect,$flags]);
 }
 
 sub result_dir() {
@@ -274,7 +274,7 @@ sub result_dir() {
 sub getcurrentscreenshot() {
 	my $mylastname = $lastname;
 	sleep 0.4; # time to write the file
-	return fileContent($mylastname);
+	return tinycv::read($mylastname);
 }
 
 sub check_color($$) {
@@ -610,8 +610,7 @@ sub take_screenshot(;$) {
 	mkdir $path;
 	if($lastname && -e $lastname) { # processing previous image, because saving takes time
 		# hardlinking identical files saves space
-		my $data=fileContent($lastname);
-		my $md5=Digest::MD5::md5_hex($data);
+		my $md5= tinycv::read($lastname)->checksum();
 		if($md5badlist{$md5}) {diag "error condition detected. test failed. see $lastname"; sleep 1; mydie "bad image seen"}
 		my($statuser, $statsystem) = $backend->cpu_stat();
 		my $statstr = '';
@@ -693,8 +692,8 @@ sub alive() {
 
 sub checkrefimgs($$$) {
 	my ($screenimg, $refimg, $flags) = @_;
-	my $screenppm = ppm->new(fileContent($screenimg));
-	my $refppm = ppm->new(fileContent($refimg));
+	my $screenppm = tinycv::read($screenimg);
+	my $refppm = tinycv::read($refimg);
 	if (!$screenppm || !$refppm) {
 		return undef;
 	}
@@ -810,12 +809,12 @@ sub waitstillimage(;$$$) {
 	while(time-$starttime<$timeout) {
 		my $mylastname = $lastname;
 		sleep 1;
-		my $data=fileContent($mylastname);
-		next unless $data; # this must stay to get only valid imgs to fifo
+		my $img=tinycv::read($mylastname);
+		next unless $img; # this must stay to get only valid imgs to fifo
 		push(@recentimages, $mylastname);
 		if(@recentimages  > $stilltime) {
 			my $e = shift @recentimages;
-			if (ppm->new($data)->maxbytediff(ppm->new(fileContent($e)), $maxdiff)) {
+			if ($img->maxbytediff(tinycv::read($e), $maxdiff)) {
 				fctres('waitstillimage', "detected same image for $stilltime seconds");
 				return 1;
 			}
@@ -840,7 +839,7 @@ sub waitimage($;$$) {
 		# prevent reading while screendump is not finished
 		my $mylastname = $lastname;
 		sleep 2;
-		$thismd5 = Digest::MD5::md5_hex(fileContent($mylastname));
+		$thismd5 = tinycv::read($mylastname)->checksum();
 		# image is equal with previous one
 		unless($lastmd5 eq $thismd5) {
 			foreach my $refimg (@refimgs) {
