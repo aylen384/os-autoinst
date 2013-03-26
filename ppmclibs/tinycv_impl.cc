@@ -247,7 +247,8 @@ Image *image_read(const char *filename)
 
 bool image_write(Image *s, const char *filename)
 {
-  // TODO
+  printf("image_write");
+  imwrite(filename, s->img);
   return true;
 }
 
@@ -364,6 +365,7 @@ void image_threshold(Image *s, int level)
 // return 0 if raw difference is larger than maxdiff (on abs() of channel)
 int image_differ(Image *a, Image *b, unsigned char maxdiff)
 {
+  printf("image_differ\n");
   // TODO
   // for(i=alen-1; i>=0; i--) {
   //   if (abs(ca[i] - cb[i]) > maxdiff)
@@ -374,6 +376,7 @@ int image_differ(Image *a, Image *b, unsigned char maxdiff)
 
 float image_avgcolor(Image *s)
 {
+  printf("image_avgcolor\n");
   // TODO
 // # calculate average color values
 // # out: (r,g,b) in range 0..1
@@ -494,12 +497,14 @@ float image_avgcolor(Image *s)
 
 std::vector<int> image_search(Image *s, Image *needle, int maxdiff)
 {
+  printf("image_search\n");
   std::vector<int> ret;
   return ret;
 }
 
 std::vector<int> image_search_fuzzy(Image *s, Image *needle)
 {
+  printf("image_search_fuzzy\n");
   std::vector<int> ret;
   return ret;
 }

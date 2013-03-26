@@ -610,7 +610,8 @@ sub take_screenshot(;$) {
 	mkdir $path;
 	if($lastname && -e $lastname) { # processing previous image, because saving takes time
 		# hardlinking identical files saves space
-		my $md5= tinycv::read($lastname)->checksum();
+	        my $img = tinycv::read($lastname);
+		my $md5= $img->checksum();
 		if($md5badlist{$md5}) {diag "error condition detected. test failed. see $lastname"; sleep 1; mydie "bad image seen"}
 		my($statuser, $statsystem) = $backend->cpu_stat();
 		my $statstr = '';
@@ -619,8 +620,8 @@ sub take_screenshot(;$) {
 			$statstr .= "statuser=$statuser ";
 			$statstr .= "statsystem=$statsystem ";
 		}
-		if (defined $data and length($data) gt 0) {
-			@lastavgcolor = ppm->new($data)->avgcolor();
+		if ($img->xres() > 0) {
+			@lastavgcolor = $img->avgcolor();
 		}
 		my $filevar = "file=".basename($lastname)." ";
 		my $laststgvar = ($ENV{HW})?"laststage=$lastinststage ":'';
@@ -631,7 +632,12 @@ sub take_screenshot(;$) {
 		if($md5goodlist{$md5}) {$goodimageseen=1; diag "good image"}
 
 		# ignore bottom 15 lines (blinking cursor, animated mouse-pointer)
-		if(length($data)==1440015) {$md5=Digest::MD5::md5(substr($data,15,800*3*(600-15)))}
+		if ($img->xres() == 800 && $img->yres() == 600) {
+		  # bogus check but we only care for md5sum
+		  my $img2 = $img->copy();
+		  $img2->replacerect(0, 585, 800, 15);
+		  $md5 = $img2->checksum();
+		}
 		if($md5file{$md5}) { # old
 			unlink($lastname); # warning: will break if FS does not support hardlinking
 			link($md5file{$md5}->[0], $lastname);
@@ -650,12 +656,12 @@ sub take_screenshot(;$) {
 		}
 		else { # new
 			$md5file{$md5}=[$lastname,1];
-			my $ocr=get_ocr(\$data);
+			my $ocr=get_ocr(\$img);
 			if($ocr) { diag "ocr: $ocr" }
-			inststagedetect(\$data);
+			inststagedetect(\$img);
 		}
 		# strip first 10 screenshots, if they are too small (was that related to some ffmpeg issues?)
-		if(($framecounter++ < 10) && length($data)<800*600*3) {unlink($lastname)}
+		if(($framecounter++ < 10) && $img->xres()<800) {unlink($lastname)}
 	}
 	my $t=[gettimeofday()];
 	my $filename=$path.sprintf("%i.%06i.ppm", $t->[0], $t->[1]);
@@ -814,7 +820,7 @@ sub waitstillimage(;$$$) {
 		push(@recentimages, $mylastname);
 		if(@recentimages  > $stilltime) {
 			my $e = shift @recentimages;
-			if ($img->maxbytediff(tinycv::read($e), $maxdiff)) {
+			if ($img->differ(tinycv::read($e), $maxdiff)) {
 				fctres('waitstillimage', "detected same image for $stilltime seconds");
 				return 1;
 			}

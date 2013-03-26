@@ -68,6 +68,13 @@ tinycv::Image copyrect(tinycv::Image self, long x, long y, long width, long heig
   OUTPUT:
     RETVAL
 
+bool differ(tinycv::Image self, tinycv::Image other, unsigned char maxdiff)
+  CODE:
+    RETVAL = image_differ(self, other, maxdiff);
+   
+  OUTPUT:
+    RETVAL
+
 void threshold(tinycv::Image self, int level)
   CODE:
     image_threshold(self, level);
