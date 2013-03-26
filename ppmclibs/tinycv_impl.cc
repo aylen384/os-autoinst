@@ -318,15 +318,20 @@ long image_yres(Image *s)
   return s->img.rows;
 }
 
+/* 
+ * in the image s replace all pixels in the given range with 0 - in place
+ */
 void image_replacerect(Image *s, long x, long y, long width, long height)
 {
-  // TODO
+  rectangle(s->img, Rect(x, y, width, height), Scalar(0), CV_FILLED);
 }
 
+/* copies the given range into a new image */
 Image *image_copyrect(Image *s, long x, long y, long width, long height)
 {
-  // TODO
-  return s;
+  Image *n = new Image;
+  n->img = Mat(s->img, Range(x,x+width), Range(y, y+height));
+  return n;
 }
 
 void image_threshold(Image *s, int level)
