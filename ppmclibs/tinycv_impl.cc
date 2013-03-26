@@ -17,7 +17,7 @@
 using namespace cv;
 
 struct Image {
-  cv::Mat *img;
+  cv::Mat img;
 };
 
 // make box lines eq 0° or 90°
@@ -237,9 +237,8 @@ std::vector<int> search_TEMPLATE(std::string str_scene, std::string str_object) 
 Image *image_read(const char *filename)
 {
   Image *image = new Image;
-  image->img = new Mat;
-  *(image->img) = imread(filename, CV_LOAD_IMAGE_COLOR);
-  if (!(image->img->data)) {
+  image->img = imread(filename, CV_LOAD_IMAGE_COLOR);
+  if (!image->img.data) {
     std::cout << "Could not open image" << filename << std::endl;
     return 0L;
   }
@@ -252,9 +251,53 @@ bool image_write(Image *s, const char *filename)
   return true;
 }
 
+/* stack overflow license ... */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <openssl/md5.h>
+
+std::string str2md5(const char* str, int length) {
+    int n;
+    MD5_CTX c;
+    unsigned char digest[16];
+    char out[33];
+
+    MD5_Init(&c);
+
+    while (length > 0) {
+        if (length > 512) {
+            MD5_Update(&c, str, 512);
+        } else {
+            MD5_Update(&c, str, length);
+        }
+        length -= 512;
+        str += 512;
+    }
+
+    MD5_Final(digest, &c);
+
+    for (n = 0; n < 16; ++n) {
+      snprintf(out + n*2, 16*2, 
+	       "%02x", (unsigned int)digest[n]);
+    }
+
+    return out;
+}
+
 std::string image_checksum(Image *s)
 {
-  return std::string("hallo");
+  vector<uchar> buf;
+  if (!imencode(".ppm", s->img, buf))
+    return "error";
+  const char *cbuf = reinterpret_cast<const char*> (&buf[0]);
+  const char *cbuf_start = cbuf;
+  // the perl code removed the header before md5, 
+  // so we need to do the same
+  cbuf = strchr(cbuf, '\n') + 1; // "P6\n";
+  cbuf = strchr(cbuf, '\n') + 1; // "800 600\n";
+  cbuf = strchr(cbuf, '\n') + 1; // "255\n";
+  return str2md5(cbuf, buf.size() - (cbuf - cbuf_start));
 }
 
 Image *image_copy(Image *s)

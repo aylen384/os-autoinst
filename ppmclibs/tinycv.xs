@@ -80,9 +80,19 @@ float avgcolor(tinycv::Image self)
     RETVAL
  
 void search(tinycv::Image self, tinycv::Image needle, int maxdiff)
-  CODE:
+  PPCODE:
     std::vector<int> ret = image_search(self, needle, maxdiff);
+    EXTEND(SP, ret.size());
+    std::vector<int>::const_iterator it = ret.begin();
+    for (; it != ret.end(); ++it) { 
+      PUSHs(sv_2mortal(newSViv(*it)));
+    }
 
 void search_fuzzy(tinycv::Image self, tinycv::Image needle)
-  CODE:
+  PPCODE:
     std::vector<int> ret = image_search_fuzzy(self, needle);
+    EXTEND(SP, ret.size());
+    std::vector<int>::const_iterator it = ret.begin();
+    for (; it != ret.end(); ++it) { 
+      PUSHs(sv_2mortal(newSViv(*it)));
+    }

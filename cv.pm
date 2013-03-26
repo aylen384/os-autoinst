@@ -16,7 +16,7 @@ unless(-e "$libdir/ppmclibs/Makefile") {
         system("cd $libdir/ppmclibs ; perl Makefile.PL");
 }
 
-system("make", "-C", "$libdir/ppmclibs", "-s");
+system("make", "-C", "$libdir/ppmclibs", "-s") == 0 || die 'make failed';
 
 BEGIN {
   my $libdir = dirname(__FILE__);
