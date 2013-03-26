@@ -589,20 +589,21 @@ sub power($) {
 
 # runtime information gathering functions
 
-sub do_take_screenshot($;$) {
-	my $filename = shift;
+sub do_take_screenshot(;$) {
 	my $flags = shift || '';
 	unless($flags=~m/q/) {
 		fctlog('screendump', "filename=$filename");
 	}
-	$backend->screendump($filename);
+	return $backend->screendump();
 }
 
 sub timeout_screenshot() {
 	my $n = ++$timeoutcounter;
 	my $dir=result_dir;
 	my $n2=sprintf("%02i",$n);
-	do_take_screenshot("$dir/timeout-$n2.ppm");
+	my $img = $do_take_screenshot();
+	$img->write("$dir/timeout-$n2.png");
+	return $img;
 }
 
 sub take_screenshot(;$) {
@@ -665,9 +666,10 @@ sub take_screenshot(;$) {
 		if(($framecounter++ < 10) && $img->xres()<800) {unlink($lastname)}
 	}
 	my $t=[gettimeofday()];
-	my $filename=$path.sprintf("%i.%06i.ppm", $t->[0], $t->[1]);
+	my $img = do_take_screenshot($flags);
+	my $filename=$path.sprintf("%i.%06i.png", $t->[0], $t->[1]);
 	#print STDERR $filename,"\n";
-	do_take_screenshot($filename, $flags);
+	$img->write($filename);
 	$lastname=$filename;
 }
 
