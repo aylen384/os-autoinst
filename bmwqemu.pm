@@ -16,6 +16,7 @@ use threads::shared;
 use POSIX; 
 use Term::ANSIColor;
 use Data::Dump "dump";
+use Carp::Always;
 
 our ($VERSION, @ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
 @ISA = qw(Exporter);
@@ -656,9 +657,9 @@ sub take_screenshot(;$) {
 		}
 		else { # new
 			$md5file{$md5}=[$lastname,1];
-			my $ocr=get_ocr(\$img);
+			my $ocr=get_ocr($img);
 			if($ocr) { diag "ocr: $ocr" }
-			inststagedetect(\$img);
+			inststagedetect($img);
 		}
 		# strip first 10 screenshots, if they are too small (was that related to some ffmpeg issues?)
 		if(($framecounter++ < 10) && $img->xres()<800) {unlink($lastname)}
@@ -722,9 +723,9 @@ sub checkrefimgs($$$) {
 }
 
 sub get_ocr($) {
-	# input: ref on PPM data
-	my $dataref=shift;
-	my $ocr=ocr::get_ocr($dataref, "-m 2 -s 6", \@ocrrect);
+	# input: tinycv object
+	my $img=shift;
+	my $ocr=ocr::get_ocr($img, "-m 2 -s 6", \@ocrrect);
 	if(!$ocr) {return ""}
 	$ocr=~s/^[_ \t\n]+//;
 	$ocr=~s/\n/ --- /g;
@@ -735,11 +736,9 @@ sub get_ocr($) {
 }
 
 sub inststagedetect($) {
-	# input: ref on PPM data
-	my $dataref=shift;
-	return if !$goodsizes{length($$dataref)}; # only work on images of 800x600 and 1024x768
-	my $ppm=ppm->new($$dataref);
-	return unless $ppm;
+	# input: tinycv object
+	my $ppm=shift;
+	return unless $ppm->xres() > 0;
 	my @md5=();
 	# use several relevant non-text parts of the screen to look them up
 	# WARNING: some break when background/theme changes (%md5inststage needs updating)
