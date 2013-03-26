@@ -310,14 +310,12 @@ Image *image_copy(Image *s)
 
 long image_xres(Image *s)
 {
-  // TODO
-  return 1024;
+  return s->img.cols;
 }
 
 long image_yres(Image *s)
 {
-  // TODO
-  return 1024;
+  return s->img.rows;
 }
 
 void image_replacerect(Image *s, long x, long y, long width, long height)
