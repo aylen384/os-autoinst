@@ -285,11 +285,15 @@ std::string str2md5(const char* str, int length) {
     return out;
 }
 
-std::string image_checksum(Image *s)
+static vector<uchar> convert_to_ppm(Image *s, int &header_length)
 {
   vector<uchar> buf;
-  if (!imencode(".ppm", s->img, buf))
-    return "error";
+  if (!imencode(".ppm", s->img, buf)) {
+    fprintf(stderr, "convert_to_ppm failed\n");
+    header_length = 0;
+    return buf;
+  }
+  
   const char *cbuf = reinterpret_cast<const char*> (&buf[0]);
   const char *cbuf_start = cbuf;
   // the perl code removed the header before md5, 
@@ -297,14 +301,24 @@ std::string image_checksum(Image *s)
   cbuf = strchr(cbuf, '\n') + 1; // "P6\n";
   cbuf = strchr(cbuf, '\n') + 1; // "800 600\n";
   cbuf = strchr(cbuf, '\n') + 1; // "255\n";
-  return str2md5(cbuf, buf.size() - (cbuf - cbuf_start));
+
+  header_length = cbuf - cbuf_start;
+  return buf;
+}
+
+std::string image_checksum(Image *s)
+{
+  int header_length;
+  vector<uchar> buf = convert_to_ppm(s, header_length);
+
+  const char *cbuf = reinterpret_cast<const char*> (&buf[0]);
+  return str2md5(cbuf + header_length, buf.size() - header_length);
 }
 
 Image *image_copy(Image *s)
 {
   Image *ni = new Image;
-  // TODO: actually detach
-  ni->img = s->img;
+  s->img.copyTo(ni->img);
   return ni;
 }
 
@@ -330,18 +344,21 @@ void image_replacerect(Image *s, long x, long y, long width, long height)
 Image *image_copyrect(Image *s, long x, long y, long width, long height)
 {
   Image *n = new Image;
-  n->img = Mat(s->img, Range(x,x+width), Range(y, y+height));
+  n->img = Mat(s->img, Range(y, y+height), Range(x,x+width));
   return n;
 }
 
+// in-place op: change all values to 0 (if below threshold) or 255 otherwise
 void image_threshold(Image *s, int level)
 {
-  // TODO
-// # in-place op: change all values to 0 (if below threshold) or 255 otherwise
+  int header_length;
+  vector<uchar> buf = convert_to_ppm(s, header_length);
 
-  //long i; STRLEN len; unsigned char *c=SvPV(s,len);
-  //for(i=len-1; i>=0; i--)
-  //c[i]=((c[i]<thresholdval)? 0 : 0xff);
+  vector<uchar>::iterator it = buf.begin() + header_length;
+  for (; it != buf.end(); ++it) {
+    *it = (*it < level) ? 0 : 0xff;
+  }
+  s->img = imdecode(buf, 1);
 }
 
 // return 0 if raw difference is larger than maxdiff (on abs() of channel)
