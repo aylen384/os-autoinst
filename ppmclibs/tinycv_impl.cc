@@ -371,6 +371,12 @@ void image_threshold(Image *s, int level)
 // return 0 if raw difference is larger than maxdiff (on abs() of channel)
 bool image_differ(Image *a, Image *b, unsigned char maxdiff)
 {
+  if (a->img.rows != b->img.rows)
+    return true;
+
+  if (a->img.cols != b->img.cols)
+    return true;
+
   cv::Mat diff = abs(a->img - b->img);
 
   int header_length;
