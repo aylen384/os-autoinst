@@ -638,7 +638,7 @@ sub take_screenshot(;$) {
 		}
 		if($md5file{$md5}) { # old
 			unlink($lastname); # warning: will break if FS does not support hardlinking
-			link($md5file{$md5}->[0], $lastname);
+			symlink(basename($md5file{$md5}->[0]), $lastname);
 			my $linkcount=$md5file{$md5}->[1]++;
 			#my $linkcount=(stat($lastname))[3]; # relies on FS
 			$prestandstillwarning=($linkcount>$standstillthreshold/2);
