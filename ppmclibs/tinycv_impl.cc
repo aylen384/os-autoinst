@@ -290,7 +290,7 @@ std::string str2md5(const char* str, int length) {
     return out;
 }
 
-static vector<uchar> convert_to_ppm(const Mat &s, int &header_length)
+static std::vector<uchar> convert_to_ppm(const Mat &s, int &header_length)
 {
   vector<uchar> buf;
   if (!imencode(".ppm", s, buf)) {
@@ -392,7 +392,7 @@ bool image_differ(Image *a, Image *b, unsigned char maxdiff)
   return false;
 }
 
-vector<float> image_avgcolor(Image *s)
+srd::vector<float> image_avgcolor(Image *s)
 {
   Scalar t = mean(s->img);
 
