@@ -1,0 +1,13 @@
+{
+   "width" : 800,
+   "xpos" : 0,
+   "bad" : [
+      "langincomplete"
+   ],
+   "good" : [
+      "languagepicked",
+      "inst-welcome"
+   ],
+   "ypos" : 0,
+   "height" : 600
+}

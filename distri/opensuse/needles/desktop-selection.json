@@ -1,0 +1,12 @@
+{
+   "xpos" : 0,
+   "width" : 800,
+   "good" : [
+      "before-package-selection",
+      "inst-returned-to-yast", 
+      "desktop-selection",
+      "before-package-selection"
+   ],
+   "ypos" : 0,
+   "height" : 600
+}

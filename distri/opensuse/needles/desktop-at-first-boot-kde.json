@@ -1,0 +1,9 @@
+{
+   "width" : 800,
+   "xpos" : 0,
+   "good" : [
+      "desktop-at-first-boot", "KDE"
+   ],
+   "ypos" : 0,
+   "height" : 600, "match": 96
+}
