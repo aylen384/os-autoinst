@@ -18,6 +18,7 @@ use Thread::Queue;
 use POSIX; 
 use Term::ANSIColor;
 use Data::Dump "dump";
+use Carp;
 use Carp::Always;
 
 our ($VERSION, @ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
@@ -316,7 +317,7 @@ sub mydie {
 	fctlog('mydie', "@_");
 	$backend->stop_vm();
 	close $logfd;
-	sleep 1;
+	croak $_[0];
 	exit 1;
 }
 
@@ -884,7 +885,9 @@ sub waitinststage($;$$) {
 	return waitforneedle($stage, $timeout, $extra);
 }
 
-sub waitforneedle($;$$$) {
+sub waitforneedle($;$$$);
+
+sub waitforneedle {
 	my $mustmatch=shift;
 	my $timeout=shift||30;
 	my $check=shift;

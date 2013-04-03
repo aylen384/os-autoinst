@@ -2,7 +2,7 @@
    "width" : 800,
    "xpos" : 0,
    "good" : [
-      "KDE"
+      "KDE", "reboot-after-installation"
    ],
    "ypos" : 0,
    "height" : 600, "match": 96
