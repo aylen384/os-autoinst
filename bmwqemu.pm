@@ -906,6 +906,9 @@ sub waitforneedle($;$$) {
 		sleep 1;
 	}
 	fctres('waitforneedle', "match=$mustmatch timed out after $timeout");
+	for (@{$ret||[]}) {
+		diag $_->{'file'};
+	}
 	my $t = time();
 	my $cs = getcurrentscreenshot();
 	$cs->write_optimized(result_dir() . "/$mustmatch-$t.png");
@@ -920,6 +923,7 @@ sub waitforneedle($;$$) {
 	$json->{"tags"} = \@tags;
 	print J JSON->new->pretty->encode( $json );
 	close(J);
+	diag("wrote $fn");
 	mydie unless $check;
 	return undef;
 }
