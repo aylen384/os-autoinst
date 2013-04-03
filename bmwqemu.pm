@@ -893,6 +893,7 @@ sub waitforneedle($;$$) {
 	my $ret = needle::tag($mustmatch);
 	if (!$ret) {
 		printf "NO goods for $mustmatch\n";
+		$timeout = 1;
 	}
 	for my $n (1..$timeout) {
 		my $img = getcurrentscreenshot();
