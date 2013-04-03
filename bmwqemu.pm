@@ -884,10 +884,12 @@ sub waitinststage($;$$) {
 	return waitforneedle($stage, $timeout, $extra);
 }
 
-sub waitforneedle($;$$) {
+sub waitforneedle($;$$$) {
 	my $mustmatch=shift;
 	my $timeout=shift||30;
 	my $check=shift;
+	my $retried=shift||0;
+
 	fctlog('waitforneedle', "'$mustmatch'", "timeout=$timeout");
 	# get the array reference to all matching needles
 	my $ret = needle::tag($mustmatch);
@@ -924,6 +926,13 @@ sub waitforneedle($;$$) {
 	print J JSON->new->pretty->encode( $json );
 	close(J);
 	diag("wrote $fn");
+	if (!$check && $ENV{'interactive_crop'} && $retried < 3) {
+		system('./crop.py', '--new', $mustmatch.($ENV{'interactive_crop'} || ''), $fn) || mydie;
+		# FIXME: kill needle with same file name
+		needle->new($fn);
+		# XXX: recursion!
+		return waitforneedle($mustmatch, $timeout, $check, $retried+1);
+	}
 	mydie unless $check;
 	return undef;
 }
