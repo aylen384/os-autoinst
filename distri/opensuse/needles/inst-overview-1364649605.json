@@ -1,9 +1,9 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "good" : [
-      "inst-overview"
-   ],
-   "ypos" : 0,
-   "height" : 600
+    "good": [
+        "inst-overview"
+    ], 
+    "height": 45, 
+    "width": 310, 
+    "xpos": 5, 
+    "ypos": 180
 }

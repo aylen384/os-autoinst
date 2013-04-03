@@ -1,10 +1,10 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "good" : [
-      "rebootnow"
-   ],
-   "ypos" : 0,
-   "height" : 600,
-   "matches": 98
+    "good": [
+        "rebootnow"
+    ], 
+    "height": 190, 
+    "matches": 98, 
+    "width": 340, 
+    "xpos": 230, 
+    "ypos": 205
 }
