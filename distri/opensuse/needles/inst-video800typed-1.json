@@ -1,9 +1,9 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "good" : [
-      "inst-video800typed"
-   ],
-   "ypos" : 0,
-   "height" : 600
+    "good": [
+        "inst-video800typed"
+    ], 
+    "height": 45, 
+    "width": 290, 
+    "xpos": 150, 
+    "ypos": 465
 }
