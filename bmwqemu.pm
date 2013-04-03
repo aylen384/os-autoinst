@@ -905,10 +905,16 @@ sub waitforneedle($;$$) {
 	}
 	fctres('waitforneedle', "match=$mustmatch timed out after $timeout");
 	my $t = time();
-	getcurrentscreenshot()->write_optimized(result_dir() . "/$mustmatch-$t.png");
+	my $cs = getcurrentscreenshot();
+	$cs->write_optimized(result_dir() . "/$mustmatch-$t.png");
 	open(J, ">", result_dir() . "/$mustmatch-$t.json");
-	
-	print J JSON->new->pretty->encode( { xpos => 0, ypos => 0, width => 800, height => 600, good => [ $mustmatch ]});
+	my $json = { xpos => 0, ypos => 0, width => $cs->{xres} , height => $cs->{yres} };
+	my @tags = ( $mustmatch );
+	for my $key (qw(VIDEOMODE DESKTOP DISTRI INSTLANG LIVECD)) {
+		push(@tags, "ENV-$key-" . $ENV{$key}) if $ENV{$key};
+	}
+	$json{"tags"} = \@tags;
+	print J JSON->new->pretty->encode( $json );
 	close(J);
 	mydie unless $check;
 	return 0;
