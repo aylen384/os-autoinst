@@ -1,12 +1,13 @@
 {
-   "xpos" : 20,
-   "width" : 400,
-   "good" : [
-      "inst-bootmenu", "bootloader"
-   ],
-   "processing_flags" : "t",
-   "match" : 95,
-   "ypos" : 20,
-   "height" : 400,
-   "max_offset" : 0
+    "good": [
+        "inst-bootmenu", 
+        "bootloader"
+    ], 
+    "height": 250, 
+    "match": 95, 
+    "max_offset": 0, 
+    "processing_flags": "t", 
+    "width": 800, 
+    "xpos": 0, 
+    "ypos": 0
 }
