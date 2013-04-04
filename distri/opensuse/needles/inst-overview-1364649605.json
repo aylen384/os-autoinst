@@ -1,9 +1,9 @@
 {
-    "tags": [
-        "inst-overview"
-    ], 
     "height": 45, 
+    "tags": [
+        "inst-overview", "ENV-DESKTOP-kde"
+    ], 
     "width": 310, 
-    "xpos": 5, 
+    "xpos": 155, 
     "ypos": 180
 }
