@@ -18,8 +18,6 @@ use Thread::Queue;
 use POSIX; 
 use Term::ANSIColor;
 use Data::Dump "dump";
-use Carp;
-use Carp::Always;
 
 our ($VERSION, @ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
 @ISA = qw(Exporter);
@@ -317,7 +315,7 @@ sub mydie {
 	fctlog('mydie', "@_");
 	$backend->stop_vm();
 	close $logfd;
-	croak "mydie";
+	eval 'croak "mydie"; ';
 	exit 1;
 }
 
