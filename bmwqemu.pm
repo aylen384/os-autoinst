@@ -935,7 +935,7 @@ sub waitforneedle {
 		# FIXME: kill needle with same file name
 		needle->new($fn);
 		# XXX: recursion!
-		return waitforneedle($mustmatch, $timeout, $check, $retried+1);
+		return waitforneedle($mustmatch, 3, $check, $retried+1);
 	}
 	mydie unless $check;
 	return undef;
