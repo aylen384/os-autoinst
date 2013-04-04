@@ -4,7 +4,7 @@
    "bad" : [
       "langincomplete"
    ],
-   "good" : [
+   "tags" : [
       "languagepicked",
       "inst-welcome"
    ],

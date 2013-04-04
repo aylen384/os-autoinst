@@ -1,9 +1,9 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "good" : [
-      "inst-packagestyped"
-   ],
-   "ypos" : 0,
-   "height" : 600
+    "tags": [
+        "inst-packagestyped"
+    ], 
+    "height": 165, 
+    "width": 800, 
+    "xpos": 0, 
+    "ypos": 40
 }

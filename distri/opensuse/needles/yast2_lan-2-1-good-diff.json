@@ -1,7 +1,7 @@
 {
    "width" : 85,
    "xpos" : "0",
-   "good" : [
+   "tags" : [
       "test-yast2_lan-2"
    ],
    "ypos" : "2",

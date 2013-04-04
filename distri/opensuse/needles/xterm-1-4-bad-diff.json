@@ -1,7 +1,7 @@
 {
    "width" : 81,
    "xpos" : "2",
-   "good" : [
+   "tags" : [
       "test-xterm-1"
    ],
    "ypos" : "11",

@@ -1,7 +1,7 @@
 {
    "width" : 800,
    "xpos" : 0,
-   "good" : [
+   "tags" : [
       "KDE", "reboot-after-installation"
    ],
    "ypos" : 0,
