@@ -1,9 +1,11 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "good" : [
-      "startinstall"
-   ],
-   "ypos" : 0,
-   "height" : 600
+    "height": 265, 
+    "tags": [
+        "startinstall", 
+        "ENV-DISTRI-opensuse", 
+        "ENV-INSTLANG-en_US"
+    ], 
+    "width": 350, 
+    "xpos": 225, 
+    "ypos": 165
 }
