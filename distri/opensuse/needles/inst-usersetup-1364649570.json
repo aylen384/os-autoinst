@@ -1,9 +1,9 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "tags" : [
-      "inst-usersetup"
-   ],
-   "ypos" : 0,
-   "height" : 600
+    "height": 545, 
+    "tags": [
+        "inst-usersetup"
+    ], 
+    "width": 645, 
+    "xpos": 155, 
+    "ypos": 55
 }
