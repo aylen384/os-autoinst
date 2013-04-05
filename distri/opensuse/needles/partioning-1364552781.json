@@ -1,9 +1,9 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "tags" : [
-      "partioning"
-   ],
-   "ypos" : 0,
-   "height" : 600
+    "height": 375, 
+    "tags": [
+        "partioning"
+    ], 
+    "width": 635, 
+    "xpos": 160, 
+    "ypos": 225
 }
