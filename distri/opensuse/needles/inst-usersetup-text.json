@@ -1,0 +1,13 @@
+{
+    "height": 510, 
+    "tags": [
+        "inst-usersetup", 
+        "ENV-VIDEOMODE-text", 
+	"ENV-DESKTOP-textmode",
+        "ENV-DISTRI-opensuse", 
+        "ENV-INSTLANG-en_US"
+    ], 
+    "width": 660, 
+    "xpos": 0, 
+    "ypos": 0
+}

@@ -1,0 +1,13 @@
+{
+    "height": 115, 
+    "tags": [
+        "inst-userpasswdtoosimple", 
+        "ENV-VIDEOMODE-text", 
+	"ENV-DESKTOP-textmode",
+        "ENV-DISTRI-opensuse", 
+        "ENV-INSTLANG-en_US"
+    ], 
+    "width": 300, 
+    "xpos": 250, 
+    "ypos": 230
+}
