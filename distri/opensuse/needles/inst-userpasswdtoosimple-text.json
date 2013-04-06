@@ -3,7 +3,6 @@
     "tags": [
         "inst-userpasswdtoosimple", 
         "ENV-VIDEOMODE-text", 
-	"ENV-DESKTOP-textmode",
         "ENV-DISTRI-opensuse", 
         "ENV-INSTLANG-en_US"
     ], 

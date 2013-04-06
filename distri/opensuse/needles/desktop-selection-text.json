@@ -3,9 +3,8 @@
     "tags": [
         "desktop-selection", 
         "ENV-VIDEOMODE-text", 
-        "ENV-DESKTOP-textmode", 
         "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
+        "ENV-INSTLANG-en_US", "inst-returned-to-yast"
     ], 
     "width": 665, 
     "xpos": 0, 

@@ -1,12 +1,12 @@
 {
-    "height": 135, 
+    "height": 80, 
     "tags": [
-        "disabledhome", 
+        "inst-textselected", 
         "ENV-VIDEOMODE-text", 
         "ENV-DISTRI-opensuse", 
         "ENV-INSTLANG-en_US"
     ], 
-    "width": 445, 
-    "xpos": 135, 
-    "ypos": 235
+    "width": 120, 
+    "xpos": 230, 
+    "ypos": 390
 }

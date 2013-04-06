@@ -1,0 +1,12 @@
+{
+   "width" : 800,
+   "xpos" : 0,
+   "ypos" : 0,
+   "height" : 600,
+   "tags" : [
+      "before-package-selection",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
+}
