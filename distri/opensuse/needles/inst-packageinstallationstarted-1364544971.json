@@ -1,10 +1,10 @@
 {
-   "xpos" : 0,
-   "width" : 800,
-   "tags" : [
-      "inst-packageinstallationstarted"
-   ],
-   "match" : 93,
-   "ypos" : 0,
-   "height" : 600
+    "height": 55, 
+    "match": 93, 
+    "tags": [
+        "inst-packageinstallationstarted"
+    ], 
+    "width": 800, 
+    "xpos": 0, 
+    "ypos": 0
 }
