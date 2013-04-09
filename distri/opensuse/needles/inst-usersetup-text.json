@@ -1,7 +1,7 @@
 {
     "height": 510, 
     "tags": [
-        "inst-usersetup", 
+        "inst-usersetup", "after-paritioning",
         "ENV-VIDEOMODE-text", 
         "ENV-DISTRI-opensuse", 
         "ENV-INSTLANG-en_US"

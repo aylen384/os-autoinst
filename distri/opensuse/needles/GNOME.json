@@ -1,12 +1,15 @@
 {
-    "height": 600, 
+    "height": 550, 
     "tags": [
-        "GNOME", "desktop-at-first-boot",
+        "GNOME", 
+        "desktop-at-first-boot", 
+        "reboot-after-installation", 
         "ENV-DESKTOP-gnome", 
         "ENV-DISTRI-opensuse", 
         "ENV-INSTLANG-en_US"
     ], 
     "width": 800, 
+    "matches": 98,
     "xpos": 0, 
     "ypos": 0
 }

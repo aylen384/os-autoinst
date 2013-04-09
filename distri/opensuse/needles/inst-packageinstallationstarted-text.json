@@ -1,12 +1,12 @@
 {
-    "height": 60, 
+    "height": 65, 
     "tags": [
         "inst-packageinstallationstarted", 
         "ENV-VIDEOMODE-text", 
         "ENV-DISTRI-opensuse", 
         "ENV-INSTLANG-en_US"
     ], 
-    "width": 250, 
+    "width": 400, 
     "xpos": 0, 
     "ypos": 0
 }
