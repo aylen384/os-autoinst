@@ -1,9 +1,13 @@
 {
-    "height": 90, 
-    "tags": [
-        "inst-userpasswdtoosimple"
-    ], 
-    "width": 160, 
-    "xpos": 320, 
-    "ypos": 255
+   "include" : [
+      {
+         "width" : 160,
+         "xpos" : 320,
+         "ypos" : 255,
+         "height" : 90
+      }
+   ],
+   "tags" : [
+      "inst-userpasswdtoosimple"
+   ]
 }

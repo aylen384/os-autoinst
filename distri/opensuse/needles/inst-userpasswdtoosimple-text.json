@@ -1,12 +1,16 @@
 {
-    "height": 115, 
-    "tags": [
-        "inst-userpasswdtoosimple", 
-        "ENV-VIDEOMODE-text", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 300, 
-    "xpos": 250, 
-    "ypos": 230
+   "include" : [
+      {
+         "width" : 300,
+         "xpos" : 250,
+         "ypos" : 230,
+         "height" : 115
+      }
+   ],
+   "tags" : [
+      "inst-userpasswdtoosimple",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

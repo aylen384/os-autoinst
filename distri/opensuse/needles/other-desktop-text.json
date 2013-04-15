@@ -1,13 +1,17 @@
 {
-    "height": 450, 
-    "tags": [
-        "other-desktop", 
-        "ENV-VIDEOMODE-text", 
-        "ENV-DESKTOP-textmode", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 600, 
-    "xpos": 0, 
-    "ypos": 0
+   "include" : [
+      {
+         "width" : 600,
+         "xpos" : 0,
+         "ypos" : 0,
+         "height" : 450
+      }
+   ],
+   "tags" : [
+      "other-desktop",
+      "ENV-VIDEOMODE-text",
+      "ENV-DESKTOP-textmode",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

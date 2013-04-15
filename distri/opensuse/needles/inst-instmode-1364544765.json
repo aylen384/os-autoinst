@@ -1,9 +1,13 @@
 {
-   "xpos" : 0,
-   "width" : 800,
+   "include" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "ypos" : 0,
+         "height" : 600
+      }
+   ],
    "tags" : [
       "inst-instmode"
-   ],
-   "ypos" : 0,
-   "height" : 600
+   ]
 }

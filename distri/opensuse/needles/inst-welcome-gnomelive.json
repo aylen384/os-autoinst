@@ -1,13 +1,18 @@
 {
-    "height": 555, 
-    "tags": [
-        "inst-welcome", "languagepicked",
-        "ENV-DESKTOP-gnome", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US", 
-        "ENV-LIVECD-1"
-    ], 
-    "width": 800, 
-    "xpos": 0, 
-    "ypos": 45
+   "include" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "ypos" : 45,
+         "height" : 555
+      }
+   ],
+   "tags" : [
+      "inst-welcome",
+      "languagepicked",
+      "ENV-DESKTOP-gnome",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US",
+      "ENV-LIVECD-1"
+   ]
 }

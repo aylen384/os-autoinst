@@ -1,9 +1,13 @@
 {
-   "width" : 81,
-   "xpos" : "2",
+   "include" : [
+      {
+         "width" : 81,
+         "xpos" : "2",
+         "ypos" : "11",
+         "height" : 42
+      }
+   ],
    "tags" : [
       "test-xterm-1"
-   ],
-   "ypos" : "11",
-   "height" : 42
+   ]
 }

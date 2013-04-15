@@ -1,9 +1,17 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "tags" : [
-      "desktop-at-first-boot", "KDE", "reboot-after-installation", "ENV-DESKTOP-kde"
+   "include" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "match" : 96,
+         "ypos" : 0,
+         "height" : 600
+      }
    ],
-   "ypos" : 0,
-   "height" : 600, "match": 96
+   "tags" : [
+      "desktop-at-first-boot",
+      "KDE",
+      "reboot-after-installation",
+      "ENV-DESKTOP-kde"
+   ]
 }

@@ -1,12 +1,17 @@
 {
-    "height": 600, 
-    "tags": [
-        "LXDE", "desktop-at-first-boot",
-        "ENV-DESKTOP-lxde", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 800, 
-    "xpos": 0, 
-    "ypos": 0
+   "include" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "ypos" : 0,
+         "height" : 600
+      }
+   ],
+   "tags" : [
+      "LXDE",
+      "desktop-at-first-boot",
+      "ENV-DESKTOP-lxde",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

@@ -1,12 +1,16 @@
 {
-    "height": 165, 
-    "tags": [
-        "rebootnow",
-	"ENV-VIDEOMODE-text",
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 510, 
-    "xpos": 140, 
-    "ypos": 185
+   "include" : [
+      {
+         "width" : 510,
+         "xpos" : 140,
+         "ypos" : 185,
+         "height" : 165
+      }
+   ],
+   "tags" : [
+      "rebootnow",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

@@ -1,10 +1,15 @@
 {
-    "tags": [
-        "rebootnow", "ENV-LIVECD-0"
-    ], 
-    "height": 145, 
-    "matches": 98, 
-    "width": 340, 
-    "xpos": 230, 
-    "ypos": 205
+   "matches" : 98,
+   "include" : [
+      {
+         "width" : 340,
+         "xpos" : 230,
+         "ypos" : 205,
+         "height" : 145
+      }
+   ],
+   "tags" : [
+      "rebootnow",
+      "ENV-LIVECD-0"
+   ]
 }

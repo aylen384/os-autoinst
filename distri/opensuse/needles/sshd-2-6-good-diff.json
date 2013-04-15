@@ -1,9 +1,13 @@
 {
-   "width" : 196,
-   "xpos" : "78",
+   "include" : [
+      {
+         "width" : 196,
+         "xpos" : "78",
+         "ypos" : "66",
+         "height" : 47
+      }
+   ],
    "tags" : [
       "test-sshd-2"
-   ],
-   "ypos" : "66",
-   "height" : 47
+   ]
 }

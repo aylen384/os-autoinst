@@ -1,13 +1,17 @@
 {
-    "tags": [
-        "inst-bootmenu", 
-        "bootloader"
-    ], 
-    "height": 250, 
-    "match": 95, 
-    "max_offset": 0, 
-    "processing_flags": "t", 
-    "width": 800, 
-    "xpos": 0, 
-    "ypos": 0
+   "include" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "processing_flags" : "t",
+         "match" : 95,
+         "ypos" : 0,
+         "max_offset" : 0,
+         "height" : 250
+      }
+   ],
+   "tags" : [
+      "inst-bootmenu",
+      "bootloader"
+   ]
 }

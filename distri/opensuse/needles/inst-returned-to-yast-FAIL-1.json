@@ -1,9 +1,13 @@
 {
-   "width" : 800,
-   "xpos" : 0,
    "bad" : [
       "inst-returned-to-yast"
    ],
-   "ypos" : 0,
-   "height" : 600
+   "include" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "ypos" : 0,
+         "height" : 600
+      }
+   ]
 }

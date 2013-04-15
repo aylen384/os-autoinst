@@ -1,12 +1,16 @@
 {
-    "height": 80, 
-    "tags": [
-        "inst-textselected", 
-        "ENV-VIDEOMODE-text", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 120, 
-    "xpos": 230, 
-    "ypos": 390
+   "include" : [
+      {
+         "width" : 120,
+         "xpos" : 230,
+         "ypos" : 390,
+         "height" : 80
+      }
+   ],
+   "tags" : [
+      "inst-textselected",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

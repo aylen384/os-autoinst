@@ -1,9 +1,13 @@
 {
-    "tags": [
-        "inst-video800typed"
-    ], 
-    "height": 45, 
-    "width": 290, 
-    "xpos": 150, 
-    "ypos": 465
+   "include" : [
+      {
+         "width" : 290,
+         "xpos" : 150,
+         "ypos" : 465,
+         "height" : 45
+      }
+   ],
+   "tags" : [
+      "inst-video800typed"
+   ]
 }

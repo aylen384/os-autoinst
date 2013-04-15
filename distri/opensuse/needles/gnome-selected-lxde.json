@@ -1,12 +1,16 @@
 {
-    "height": 235, 
-    "tags": [
-        "gnome-selected", 
-        "ENV-DESKTOP-gnome", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 485, 
-    "xpos": 160, 
-    "ypos": 210
+   "include" : [
+      {
+         "width" : 485,
+         "xpos" : 160,
+         "ypos" : 210,
+         "height" : 235
+      }
+   ],
+   "tags" : [
+      "gnome-selected",
+      "ENV-DESKTOP-gnome",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

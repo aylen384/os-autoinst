@@ -1,12 +1,17 @@
 {
-    "height": 420, 
-    "tags": [
-        "desktop-selection", 
-        "ENV-VIDEOMODE-text", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US", "inst-returned-to-yast"
-    ], 
-    "width": 665, 
-    "xpos": 0, 
-    "ypos": 0
+   "include" : [
+      {
+         "width" : 665,
+         "xpos" : 0,
+         "ypos" : 0,
+         "height" : 420
+      }
+   ],
+   "tags" : [
+      "desktop-selection",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US",
+      "inst-returned-to-yast"
+   ]
 }

@@ -1,13 +1,17 @@
 {
-    "height": 170, 
-    "tags": [
-        "inst", 
-        "ENV-VIDEOMODE-text", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US", 
-        "inst-timezone"
-    ], 
-    "width": 300, 
-    "xpos": 0, 
-    "ypos": 0
+   "include" : [
+      {
+         "width" : 300,
+         "xpos" : 0,
+         "ypos" : 0,
+         "height" : 170
+      }
+   ],
+   "tags" : [
+      "inst",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US",
+      "inst-timezone"
+   ]
 }

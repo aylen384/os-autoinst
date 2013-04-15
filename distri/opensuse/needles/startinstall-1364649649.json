@@ -1,9 +1,13 @@
 {
-    "height": 235, 
-    "tags": [
-        "startinstall"
-    ], 
-    "width": 350, 
-    "xpos": 225, 
-    "ypos": 170
+   "include" : [
+      {
+         "width" : 350,
+         "xpos" : 225,
+         "ypos" : 170,
+         "height" : 235
+      }
+   ],
+   "tags" : [
+      "startinstall"
+   ]
 }
