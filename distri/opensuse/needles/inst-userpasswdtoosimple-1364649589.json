@@ -1,8 +1,9 @@
 {
-   "include" : [
+   "area" : [
       {
          "width" : 160,
          "xpos" : 320,
+         "type" : "match",
          "ypos" : 255,
          "height" : 90
       }

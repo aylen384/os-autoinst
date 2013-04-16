@@ -2,10 +2,11 @@
    "bad" : [
       "inst-returned-to-yast"
    ],
-   "include" : [
+   "area" : [
       {
          "width" : 800,
          "xpos" : 0,
+         "type" : "match",
          "ypos" : 0,
          "height" : 600
       }
