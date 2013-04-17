@@ -1,0 +1,14 @@
+{
+    "area": [
+        {
+            "height": 60,
+            "type": "match",
+            "width": 125,
+            "xpos": 205,
+            "ypos": 170
+        }
+    ],
+    "tags": [
+        "inst-factorydialog"
+    ]
+}

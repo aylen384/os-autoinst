@@ -6,7 +6,13 @@ use bmwqemu;
 sub run()
 {
 	my $self=shift;
-	waitforneedle("inst-welcome", 350); # live cds can take quite a long time to boot
+	if($ENV{NETBOOT}) {
+		waitforneedle("inst-factorydialog", 150);
+		sendkey "ret";
+		waitforneedle("inst-welcome", 5);
+	} else {
+		waitforneedle("inst-welcome", 350); # live cds can take quite a long time to boot
+	}
 
 	# animated cursor wastes disk space, so it is moved to bottom right corner
 	mouse_hide;
