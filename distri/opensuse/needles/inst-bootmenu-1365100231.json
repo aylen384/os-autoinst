@@ -1,16 +1,16 @@
 {
    "area" : [
       {
-         "width" : 615,
-         "xpos" : 155,
+         "width" : 610,
+         "xpos" : 0,
          "type" : "match",
-         "ypos" : 180,
-         "height" : 55
+         "ypos" : 0,
+         "height" : 310
       }
    ],
    "tags" : [
-      "inst-overview",
-      "ENV-DESKTOP-lxde",
+      "inst-bootmenu",
+      "ENV-DESKTOP-kde",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US"
    ]
