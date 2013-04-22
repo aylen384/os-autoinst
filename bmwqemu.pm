@@ -18,6 +18,7 @@ use Thread::Queue;
 use POSIX; 
 use Term::ANSIColor;
 use Data::Dump "dump";
+use Carp;
 
 our ($VERSION, @ISA, @EXPORT, @EXPORT_OK, %EXPORT_TAGS);
 @ISA = qw(Exporter);
@@ -105,6 +106,7 @@ our %cmd=qw(
 	instdetails alt-d
 	rebootnow alt-n
 	otherrootpw alt-s
+	noautologin alt-a
 	change alt-c
 	software s
 );
@@ -199,7 +201,7 @@ sub fctlog {
 	my @fparams = @_;
 	$logfd && print $logfd '<<< '.$fname.'('.join(', ', @fparams).")\n";
 	return unless $debug;
-	print STDERR colored('<<< '.$fname.'('.join(', ', @fparams).')', 'bright_blue')."\n";
+	print STDERR colored('<<< '.$fname.'('.join(', ', @fparams).')', 'blue')."\n";
 }
 
 sub fctres {
@@ -359,7 +361,7 @@ sub sendkey($) {
 	$backend->sendkey($key);
 	my @t=gettimeofday();
 	push(@keyhistory, [$t[0]*1000000+$t[1], $key]);
-	sleep(0.1);
+	sleep(0.15);
 }
 
 =head2 sendkeyw
@@ -586,11 +588,7 @@ sub power($) {
 
 sub do_take_screenshot() {
         my $ret = $backend->screendump();
-	if ($ret->xres() > 800) {
-	  return $ret->scale(800, 600);
-	} else {
-	  return $ret;
-	}
+	return $ret->scale(800, 600);
 }
 
 sub timeout_screenshot() {
@@ -613,7 +611,7 @@ sub take_screenshot(;$) {
 
 	# TODO detect bad needles
 
-	my $filename=$path.sprintf("%i.%06i.png", $t->[0], $t->[1]);
+	my $filename=$path.sprintf("%s.%06i.png", POSIX::strftime("%Y%m%d_%H%M%S", gmtime($t->[0])), $t->[1]);
         unless($flags=~m/q/) {
                 fctlog('screendump', "filename=$filename");
         }
@@ -898,20 +896,28 @@ sub _waitforneedle {
 		$needles = $mustmatch;
 		$mustmatch = '';
 		for my $n (@{$needles}) {
-			print "MM $mustmatch ", Dumper($n), "\n";
 			$mustmatch .= $n->{name} . " ";
 		}
 	} elsif ($mustmatch) {
-		$needles = needle::tags($mustmatch);
+		$needles = needle::tags($mustmatch) || [];
 	}
 	fctlog('waitforneedle', "'$mustmatch'", "timeout=$timeout");
-	if (!$needles) {
+	if (!@$needles) {
 		printf "NO goods for $mustmatch\n";
 		# give it some time to settle but not too much
 		$timeout = 3;
 	}
 	my $img = getcurrentscreenshot();
+	my $oldimg;
 	for my $n (1..$timeout) {
+		if ($oldimg) {
+			sleep 1;
+			$img = getcurrentscreenshot();
+			if ($oldimg == $img) { # no change, no need to search
+				print "no change $n\n";
+				next;
+			}
+		}
 		my $foundneedle = $img->search($needles);
 		if ($foundneedle) {
 			my $t = time();
@@ -923,16 +929,15 @@ sub _waitforneedle {
 			if ($args{'click'}) {
 				my $rx = 1; # $origx / $img->xres();
 				my $ry = 1; # $origy / $img->yres();
-				my $x = ($foundneedle->{'x'} + $foundneedle->{'needle'}->{'width'}/2)*$rx;
-				my $y = ($foundneedle->{'y'} + $foundneedle->{'needle'}->{'height'}/2)*$ry;
+				my $x = ($foundneedle->{'x'} + $foundneedle->{'w'}/2)*$rx;
+				my $y = ($foundneedle->{'y'} + $foundneedle->{'h'}/2)*$ry;
 				diag ("clicking at $x/$y");
 				mouse_set($x, $y);
 				mouse_click($args{'click'}, $args{'clicktime'});
 			}
 			return $foundneedle;
 		}
-		sleep 1;
-		$img = getcurrentscreenshot();
+		$oldimg = $img;
 	}
 	fctres('waitforneedle', "match=$mustmatch timed out after $timeout");
 	for (@{$needles||[]}) {
@@ -942,7 +947,7 @@ sub _waitforneedle {
 	$img->write_optimized(result_dir() . "/$mustmatch-$t.png");
 	my $fn = result_dir() . "/$mustmatch-$t.json";
 	open(J, ">", $fn) or die "$fn: $!\n";
-	my $json = { xpos => 0, ypos => 0, width => $img->xres() , height => $img->yres() };
+	my $json = { area => [ { xpos => 0, ypos => 0, width => $img->xres(), height => $img->yres(), type => 'match' } ] };
 	my @tags = ( $mustmatch );
 	# write out some known env variables
 	for my $key (qw(VIDEOMODE DESKTOP DISTRI INSTLANG LIVECD)) {
@@ -962,7 +967,7 @@ sub _waitforneedle {
 		if (-e $fn);
 		{
 			diag("reading new needle $fn");
-			needle->new($fn) || mydie "$!\n";
+			needle->new($fn) || mydie "$!";
 			# XXX: recursion!
 			return waitforneedle($mustmatch, 3, $args{'check'}, $args{'retried'}+1);
 		}

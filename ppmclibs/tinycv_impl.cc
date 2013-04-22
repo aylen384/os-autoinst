@@ -336,7 +336,7 @@ long image_yres(Image *s)
  */
 void image_replacerect(Image *s, long x, long y, long width, long height)
 {
-  rectangle(s->img, Rect(x, y, width, height), Scalar(0), CV_FILLED);
+  rectangle(s->img, Rect(x, y, width, height), CV_RGB(0, 255, 0), CV_FILLED);
 }
 
 /* copies the given range into a new image */
@@ -389,6 +389,7 @@ Image *image_scale(Image *a, long width, long height)
 {
   Image *n = new Image;
   n->img = Mat(height, width, a->img.type());
+  // TODO: consider not scaling up but centering
   resize(a->img, n->img, n->img.size());
 
   return n;

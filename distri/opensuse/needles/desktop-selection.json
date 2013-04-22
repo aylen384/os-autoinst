@@ -1,12 +1,17 @@
 {
-   "xpos" : 0,
-   "width" : 800,
+   "area" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 600
+      }
+   ],
    "tags" : [
       "before-package-selection",
-      "inst-returned-to-yast", 
+      "inst-returned-to-yast",
       "desktop-selection",
       "before-package-selection"
-   ],
-   "ypos" : 0,
-   "height" : 600
+   ]
 }

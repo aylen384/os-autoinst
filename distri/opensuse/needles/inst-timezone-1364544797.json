@@ -1,9 +1,14 @@
 {
-    "height": 565, 
-    "tags": [
-        "inst-timezone"
-    ], 
-    "width": 640, 
-    "xpos": 160, 
-    "ypos": 0
+   "area" : [
+      {
+         "width" : 640,
+         "xpos" : 160,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 565
+      }
+   ],
+   "tags" : [
+      "inst-timezone"
+   ]
 }

@@ -39,9 +39,9 @@ if filename.endswith('.png'):
 	png = filename
 	filename = filename[0:len(filename)-len(".png")]+'.json'
 	needle = json.loads("""{
-	    "tags": [ "FIXME" ], 
-	    "height": 100, "width": 100, 
-	    "xpos": 0, "ypos": 0
+	    "tags": [ "FIXME" ],
+	    "area": [ { "height": 100, "width": 100,
+	    "xpos": 0, "ypos": 0, "type": "match" } ]
 	}""")
 elif filename.endswith('.json'):
 	png = filename[0:len(filename)-len(".json")]+'.png'
@@ -54,7 +54,7 @@ else:
 if options.tag:
 	needle['tags'] = options.tag
 
-print json.dumps(needle, sort_keys=True, indent=4)
+print json.dumps(needle, sort_keys=True, indent=4, separators=(',', ': '))
 
 master = Tk()
 
@@ -69,55 +69,154 @@ w.pack()
 
 bg = w.create_image(0, 0, anchor=NW, image=photo)
 
-crop = w.create_rectangle(needle['xpos'],
-		needle['ypos'],
-		needle['xpos'] + needle['width'],
-		needle['ypos'] + needle['height'],
-		outline="yellow")
+uiareas = []
+
+class UiArea:
+    def __init__(self, w, area):
+	self.color = "cyan"
+	self.w = w
+	self.rect = w.create_rectangle(area['xpos'],
+		area['ypos'], area['xpos'] + area['width'],
+		area['ypos'] + area['height'],
+		outline=self.color)
+	self.text = w.create_text(area['xpos'] + area['width'], area['ypos'] + area['height'],
+		anchor="se", text=area['type'],
+		fill=self.color)
+	self.line = None
+	self._update_exclude(area)
+
+    def _update_exclude(self, area):
+	if area['type'] == 'exclude' and self.line is None:
+	    self.line = w.create_line(area['xpos'],
+		    area['ypos'] + area['height'], area['xpos'] + area['width'],
+		    area['ypos'],
+		    fill=self.color)
+	if area['type'] != 'exclude' and self.line is not None:
+	    self.w.delete(self.line)
+	    self.line = None
+
+    def setcolor(self, color):
+	self.color = color
+	self.w.itemconfig(self.rect, outline=color)
+	self.w.itemconfig(self.text, fill=color)
+	if self.line is not None:
+	    self.w.itemconfig(self.line, fill=color)
+
+    def updatearea(self, area):
+	self.w.coords(self.rect, area['xpos'], area['ypos'],
+		area['xpos'] + area['width'],
+		area['ypos'] + area['height'])
+	self.w.coords(self.text, area['xpos'] + area['width'], area['ypos'] + area['height'])
+	if self.line:
+	    self.w.coords(self.line, area['xpos'], area['ypos'] + area['height'],
+		    area['xpos'] + area['width'],
+		    area['ypos'])
+
+    def updatetype(self, area):
+	self.w.itemconfig(self.text, text=area['type'])
+	self._update_exclude(area)
+
+    def destroy(self):
+	self.w.delete(self.rect)
+	self.w.delete(self.text)
+	if self.line is not None:
+	    self.w.delete(self.line)
+
+
+for area in needle['area']:
+    uiareas.append(UiArea(w, area))
+
+rect = 0
+
+def selectarea():
+    global uiareas, rect, area
+
+    print "highlighting %d"%rect
+
+    area = needle['area'][rect]
+    for r in range(0, len(uiareas)):
+	color = "green"
+	if r == rect:
+	    color = "yellow"
+	uiareas[r].setcolor(color)
+
+selectarea()
 
 incr = 5
 
 def resize(arg):
 	if arg.keysym == 'Right':
-		if width - needle['xpos'] - needle['width'] >= incr:
-			needle['width'] = needle['width'] + incr
-		elif needle['width'] > incr:
-			needle['xpos'] = needle['xpos'] + incr
-			needle['width'] = needle['width'] - incr
+		if width - area['xpos'] - area['width'] >= incr:
+			area['width'] = area['width'] + incr
+		elif area['width'] > incr:
+			area['xpos'] = area['xpos'] + incr
+			area['width'] = area['width'] - incr
 	elif arg.keysym == 'Left':
-		if needle['width'] > incr:
-			needle['width'] = needle['width'] - incr
+		if area['width'] > incr:
+			area['width'] = area['width'] - incr
 	elif arg.keysym == 'Down':
-		if height - needle['ypos'] - needle['height'] >= incr:
-			needle['height'] = needle['height'] + incr
-		elif needle['height'] > incr:
-			needle['ypos'] = needle['ypos'] + incr
-			needle['height'] = needle['height'] - incr
+		if height - area['ypos'] - area['height'] >= incr:
+			area['height'] = area['height'] + incr
+		elif area['height'] > incr:
+			area['ypos'] = area['ypos'] + incr
+			area['height'] = area['height'] - incr
 	elif arg.keysym == 'Up':
-		if needle['height'] > incr:
-			needle['height'] = needle['height'] - incr
+		if area['height'] > incr:
+			area['height'] = area['height'] - incr
 
-	w.coords(crop, needle['xpos'], needle['ypos'],
-		needle['xpos'] + needle['width'],
-		needle['ypos'] + needle['height'])
+	uiareas[rect].updatearea(area)
 
 def move(arg):
 	if arg.keysym == 'Right':
-		if width - needle['xpos'] - needle['width'] >= incr:
-			needle['xpos'] = needle['xpos'] + incr
+		if width - area['xpos'] - area['width'] >= incr:
+			area['xpos'] = area['xpos'] + incr
 	elif arg.keysym == 'Left':
-		if needle['xpos'] >= incr:
-			needle['xpos'] = needle['xpos'] - incr
+		if area['xpos'] >= incr:
+			area['xpos'] = area['xpos'] - incr
 	elif arg.keysym == 'Down':
-		if height - needle['ypos'] - needle['height'] >= incr:
-			needle['ypos'] = needle['ypos'] + incr
+		if height - area['ypos'] - area['height'] >= incr:
+			area['ypos'] = area['ypos'] + incr
 	elif arg.keysym == 'Up':
-		if needle['ypos'] >= incr:
-			needle['ypos'] = needle['ypos'] - incr
+		if area['ypos'] >= incr:
+			area['ypos'] = area['ypos'] - incr
 
-	w.coords(crop, needle['xpos'], needle['ypos'],
-		needle['xpos'] + needle['width'],
-		needle['ypos'] + needle['height'])
+	uiareas[rect].updatearea(area)
+
+def switch(arg):
+	global rect
+	rect = (rect + 1) % len(uiareas)
+	selectarea()
+
+def addrect(arg):
+	global rect, area, uiareas, needle
+	rect=len(needle['area'])
+	needle['area'].append({ "height": 100, "width": 100,
+		"xpos": 0, "ypos": 0, "type": "match" })
+	area = needle['area'][rect]
+	uiareas.append(UiArea(w, area))
+
+	selectarea()
+
+def delrect(arg):
+	global rect, area, uiareas, needle
+	if len(uiareas) <= 1:
+	    return
+	del needle['area'][rect]
+	uiareas[rect].destroy()
+	a = []
+	for r in range(0, len(uiareas)):
+	    if r == rect:
+		continue
+	    a.append(uiareas[r])
+	uiareas = a;
+	rect = rect % len(uiareas)
+	selectarea()
+
+def changetype(arg):
+	types = ('match', 'exclude', 'ocr')
+	global rect, area, uiareas, needle
+	area['type'] = types[(types.index(area['type'])+1)%len(types)]
+	uiareas[rect].updatetype(area)
 
 def increment(arg):
 	global incr
@@ -132,16 +231,19 @@ def increment(arg):
 
 def quit(arg):
 	print "quit without saving"
-	print json.dumps(needle, sort_keys=True, indent=4)
+	print json.dumps(needle, sort_keys=True, indent=4, separators=(',', ': '))
 	master.quit()
 
 def save_quit(arg):
 	global filename
 	if options.new:
-		pat = "distri/opensuse/needles/%s.%s"
+		from os import environ
+		if not 'CASEDIR' in environ:
+		    environ['CASEDIR'] = 'distri/opensuse'
+		pat = environ['CASEDIR']+"/needles/%s.%s"
 		shutil.copyfile(png, pat%(options.new, 'png'))
 		filename = pat%(options.new, 'json')
-	json.dump(needle, open(filename, 'w'), sort_keys=True, indent=4)
+	json.dump(needle, open(filename, 'w'), sort_keys=True, indent=4, separators=(',', ': '))
 	print "saved %s"%filename
 	master.quit()
 
@@ -158,9 +260,15 @@ master.bind('-', increment)
 master.bind('s', save_quit)
 master.bind('q', quit)
 master.bind('<Escape>', quit)
+master.bind('<Tab>', switch)
+master.bind('<Insert>', addrect)
+master.bind('<Delete>', delrect)
+master.bind('t', changetype)
 
 print """Use cursor keys to move
 Use shift + cursor keys to resize
+t = change type
+ins = add area, del = remove area
 s = save, q = quit
 """
 master.mainloop()

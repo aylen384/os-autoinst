@@ -1,9 +1,14 @@
 {
-    "height": 375, 
-    "tags": [
-        "partioning"
-    ], 
-    "width": 635, 
-    "xpos": 160, 
-    "ypos": 225
+   "area" : [
+      {
+         "width" : 635,
+         "xpos" : 160,
+         "type" : "match",
+         "ypos" : 225,
+         "height" : 375
+      }
+   ],
+   "tags" : [
+      "partioning"
+   ]
 }

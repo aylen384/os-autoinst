@@ -6,7 +6,14 @@ use bmwqemu;
 sub run()
 {
 	my $self=shift;
-	waitforneedle("inst-welcome", 150);
+
+	waitforneedle("inst-welcome", 350); # live cds can take quite a long time to boot
+	if($ENV{BETA}) {
+		waitforneedle("inst-betawarning", 5);
+		sendkey "ret";
+	} elsif (checkneedle("inst-betawarning", 2)) {
+		mydie("beta warning found in non-beta");
+	}
 
 	# animated cursor wastes disk space, so it is moved to bottom right corner
 	mouse_hide;

@@ -1,0 +1,17 @@
+{
+   "area" : [
+      {
+         "width" : 220,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 135
+      }
+   ],
+   "tags" : [
+      "desktop-at-first-boot",
+      "ENV-DESKTOP-minimalx",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
+}

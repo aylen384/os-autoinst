@@ -1,0 +1,18 @@
+{
+   "area" : [
+      {
+         "width" : 300,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 170
+      }
+   ],
+   "tags" : [
+      "inst",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US",
+      "inst-timezone"
+   ]
+}

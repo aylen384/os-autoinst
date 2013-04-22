@@ -1,9 +1,14 @@
 {
-    "tags": [
-        "inst-packagestyped"
-    ], 
-    "height": 165, 
-    "width": 800, 
-    "xpos": 0, 
-    "ypos": 40
+   "area" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 40,
+         "height" : 165
+      }
+   ],
+   "tags" : [
+      "inst-packagestyped"
+   ]
 }

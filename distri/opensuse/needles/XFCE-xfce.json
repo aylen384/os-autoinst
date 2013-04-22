@@ -1,12 +1,18 @@
 {
-    "height": 600, 
-    "tags": [
-        "XFCE", "desktop-at-first-boot",
-        "ENV-DESKTOP-xfce", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 800, 
-    "xpos": 0, 
-    "ypos": 0
+   "area" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 600
+      }
+   ],
+   "tags" : [
+      "XFCE",
+      "desktop-at-first-boot",
+      "ENV-DESKTOP-xfce",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

@@ -1,12 +1,17 @@
 {
-    "height": 15, 
-    "tags": [
-        "kde-imagesused", 
-        "ENV-DESKTOP-kde", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 255, 
-    "xpos": 180, 
-    "ypos": 150
+   "area" : [
+      {
+         "width" : 255,
+         "xpos" : 180,
+         "type" : "match",
+         "ypos" : 150,
+         "height" : 15
+      }
+   ],
+   "tags" : [
+      "kde-imagesused",
+      "ENV-DESKTOP-kde",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

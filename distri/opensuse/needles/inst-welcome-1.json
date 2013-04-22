@@ -1,13 +1,15 @@
 {
-    "bad": [
-        "langincomplete"
-    ], 
-    "height": 90, 
-    "tags": [
-        "languagepicked", 
-        "inst-welcome"
-    ], 
-    "width": 370, 
-    "xpos": 155, 
-    "ypos": 0
+   "area" : [
+      {
+         "width" : 370,
+         "xpos" : 155,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 90
+      }
+   ],
+   "tags" : [
+      "languagepicked",
+      "inst-welcome"
+   ]
 }

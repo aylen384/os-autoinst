@@ -1,0 +1,17 @@
+{
+   "area" : [
+      {
+         "width" : 440,
+         "xpos" : 180,
+         "type" : "match",
+         "ypos" : 150,
+         "height" : 255
+      }
+   ],
+   "tags" : [
+      "startinstall",
+      "ENV-VIDEOMODE-text",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
+}

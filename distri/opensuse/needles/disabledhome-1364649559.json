@@ -1,9 +1,14 @@
 {
-   "width" : 800,
-   "xpos" : 0,
+   "area" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 600
+      }
+   ],
    "tags" : [
       "disabledhome"
-   ],
-   "ypos" : 0,
-   "height" : 600
+   ]
 }

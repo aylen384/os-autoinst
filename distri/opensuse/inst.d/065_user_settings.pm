@@ -7,7 +7,7 @@ sub run()
 {
 	my $self=shift;
 	# user setup
-	waitforneedle("inst-usersetup", 3);
+	waitforneedle("inst-usersetup", 5);
 	sendautotype($realname);
 	sendkey "tab";
 	#sleep 1;
@@ -16,6 +16,10 @@ sub run()
 		sendautotype("$password\t");
 	}
 	waitforneedle("inst-userinfostyped", 5);
+	if($ENV{NOAUTOLOGIN}) {
+		sendkey $cmd{"noautologin"};
+		waitforneedle("autologindisabled", 2);
+	}
 	if($ENV{DOCRUN}) {
 		sendkey $cmd{"otherrootpw"};
 		waitforneedle("rootpwdisabled", 2);

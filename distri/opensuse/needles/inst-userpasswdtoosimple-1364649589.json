@@ -1,9 +1,14 @@
 {
-   "width" : 800,
-   "xpos" : 0,
+   "area" : [
+      {
+         "width" : 160,
+         "xpos" : 320,
+         "type" : "match",
+         "ypos" : 255,
+         "height" : 90
+      }
+   ],
    "tags" : [
       "inst-userpasswdtoosimple"
-   ],
-   "ypos" : 0,
-   "height" : 600
+   ]
 }

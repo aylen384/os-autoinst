@@ -15,16 +15,49 @@ bootstrap tinycv $VERSION;
 
 package tinycv::Image;
 
+# returns area of last matched
 sub search_($$) {
     my $self = shift;
     my $needle = shift;
+    my ($sim, $xmatch, $ymatch, $d1, $d2);
+    my (@exclude, @match, @ocr);
 
-    my ($sim, $xmatch, $ymatch, $d1, $d2) = $self->search_needle($needle->get_image());
-    printf "MATCH(%s:%.2f): $xmatch $ymatch\n", $needle->{name}, $sim;
-    if ($sim >= $needle->{match} - 0.005) {
-	return { similarity => $sim, x => $xmatch, y => $ymatch, needle => $needle };
+    my $img = $self->copy;
+
+    for my $a (@{$needle->{'area'}}) {
+	push @exclude, $a if $a->{'type'} eq 'exclude';
+	push @match, $a if $a->{'type'} eq 'match';
+	push @ocr, $a if $a->{'type'} eq 'ocr';
     }
-    return undef;
+
+    for my $a (@exclude) {
+	$img->replacerect($a->{'xpos'}, $a->{'ypos'},
+	    $a->{'width'}, $a->{'height'});
+    }
+    my $area;
+    for $area (@match) {
+	my $c = $needle->get_image($area);
+	($sim, $xmatch, $ymatch, $d1, $d2) = $img->search_needle($c);
+	printf "MATCH(%s:%.2f): $xmatch $ymatch\n", $needle->{name}, $sim;
+	if ($sim < $area->{match} - 0.005) {
+	    return undef
+	}
+    }
+
+    my $ret = {
+	similarity => $sim, x => $xmatch, y => $ymatch,
+	w => $area->{'width'},
+	h => $area->{'height'},
+	needle => $needle
+    };
+
+    for my $a (@ocr) {
+	$ret->{'ocr'} ||= [];
+	my $ocr = ocr::tesseract($img, $a);
+	push @{$ret->{'ocr'}}, $ocr;
+    }
+
+    return $ret;
 }
 
 sub search($) {

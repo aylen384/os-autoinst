@@ -1,11 +1,16 @@
 {
-    "height": 110, 
-    "tags": [
-        "other-desktop", 
-        "ENV-DISTRI-opensuse", 
-        "ENV-INSTLANG-en_US"
-    ], 
-    "width": 455, 
-    "xpos": 155, 
-    "ypos": 335
+   "area" : [
+      {
+         "width" : 455,
+         "xpos" : 155,
+         "type" : "match",
+         "ypos" : 335,
+         "height" : 110
+      }
+   ],
+   "tags" : [
+      "other-desktop",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US"
+   ]
 }

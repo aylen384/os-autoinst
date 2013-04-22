@@ -13,7 +13,7 @@ sub get_ocr($$@) {
 	return unless $ppm;
 	my $ppm2=$ppm->copyrect(@ocrrect);
 	if(!$ppm2) {return ""}
-	my $tempname="/dev/shm/$$-".time.rand(10000).".ppm";
+	my $tempname="ocr.$$-".time.rand(10000).".ppm";
 	$ppm2->write($tempname) or return " ocr error writing $tempname";
 	# init DB file:
 	if(!-e "db/db.lst") {
@@ -28,6 +28,35 @@ sub get_ocr($$@) {
 	close($pipe);
 	unlink $tempname;
 	return $ocr;
+}
+
+# input: image ref, area
+# FIXME: pass options
+# FIXME: write C library bindings instead of system()
+sub tesseract($;$$)
+{
+    my $img = shift;
+    my $area = shift;
+    my $imgfn = 'ocr.png';
+    my $txtfn = 'ocr'; # tesseract appends .txt automatically o_O
+    my $txt;
+
+    if ($area) {
+	$img = $img->copyrect($area->{'xpos'}, $area->{'ypos'}, $area->{'width'}, $area->{'height'});
+    }
+
+    $img->write($imgfn);
+    if (system('tesseract', $imgfn, $txtfn) == 0) {
+	$txtfn .= '.txt';
+	if (open(my $fh, '<:encoding(UTF-8)', $txtfn)) {
+	    local $/;
+	    $txt = <$fh>;
+	    close $fh;
+	}
+    }
+    unlink $imgfn;
+    unlink $txtfn;
+    return $txt;
 }
 
 1;

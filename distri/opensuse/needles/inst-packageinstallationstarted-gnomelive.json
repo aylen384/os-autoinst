@@ -1,0 +1,19 @@
+{
+   "area" : [
+      {
+         "width" : 145,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 175
+      }
+   ],
+   "tags" : [
+      "inst-packageinstallationstarted",
+      "ENV-VIDEOMODE-text",
+      "ENV-DESKTOP-gnome",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US",
+      "ENV-LIVECD-1"
+   ]
+}

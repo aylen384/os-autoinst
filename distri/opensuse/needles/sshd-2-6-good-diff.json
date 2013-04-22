@@ -1,9 +1,14 @@
 {
-   "width" : 196,
-   "xpos" : "78",
+   "area" : [
+      {
+         "width" : 196,
+         "xpos" : "78",
+         "type" : "match",
+         "ypos" : "66",
+         "height" : 47
+      }
+   ],
    "tags" : [
       "test-sshd-2"
-   ],
-   "ypos" : "66",
-   "height" : 47
+   ]
 }

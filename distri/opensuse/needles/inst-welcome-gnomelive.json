@@ -1,0 +1,19 @@
+{
+   "area" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "type" : "match",
+         "ypos" : 45,
+         "height" : 555
+      }
+   ],
+   "tags" : [
+      "inst-welcome",
+      "languagepicked",
+      "ENV-DESKTOP-gnome",
+      "ENV-DISTRI-opensuse",
+      "ENV-INSTLANG-en_US",
+      "ENV-LIVECD-1"
+   ]
+}

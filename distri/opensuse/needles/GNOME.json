@@ -1,12 +1,27 @@
 {
-    "height": 600, 
+    "area": [
+        {
+            "height": 550,
+            "type": "ocr",
+            "width": 800,
+            "xpos": 0,
+            "ypos": 0
+        },
+        {
+            "height": 25,
+            "type": "exclude",
+            "width": 100,
+            "xpos": 350,
+            "ypos": 0
+        }
+    ],
+    "matches": 98,
     "tags": [
-        "GNOME", "desktop-at-first-boot",
-        "ENV-DESKTOP-gnome", 
-        "ENV-DISTRI-opensuse", 
+        "GNOME",
+        "desktop-at-first-boot",
+        "reboot-after-installation",
+        "ENV-DESKTOP-gnome",
+        "ENV-DISTRI-opensuse",
         "ENV-INSTLANG-en_US"
-    ], 
-    "width": 800, 
-    "xpos": 0, 
-    "ypos": 0
+    ]
 }

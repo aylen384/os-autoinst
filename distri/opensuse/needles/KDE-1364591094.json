@@ -1,9 +1,16 @@
 {
-   "width" : 800,
-   "xpos" : 0,
-   "tags" : [
-      "KDE", "reboot-after-installation"
+   "area" : [
+      {
+         "width" : 800,
+         "xpos" : 0,
+         "match" : 96,
+         "type" : "match",
+         "ypos" : 0,
+         "height" : 600
+      }
    ],
-   "ypos" : 0,
-   "height" : 600, "match": 96
+   "tags" : [
+      "KDE",
+      "reboot-after-installation"
+   ]
 }

@@ -1,9 +1,14 @@
 {
-    "height": 70, 
-    "tags": [
-        "inst-consolesettingstyped"
-    ], 
-    "width": 635, 
-    "xpos": 95, 
-    "ypos": 450
+   "area" : [
+      {
+         "width" : 635,
+         "xpos" : 95,
+         "type" : "match",
+         "ypos" : 450,
+         "height" : 70
+      }
+   ],
+   "tags" : [
+      "inst-consolesettingstyped"
+   ]
 }
