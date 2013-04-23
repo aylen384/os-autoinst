@@ -1,0 +1,14 @@
+{
+    "area": [
+        {
+            "height": 20,
+            "type": "match",
+            "width": 173,
+            "xpos": 243,
+            "ypos": 212
+        }
+    ],
+    "tags": [
+        "startinstall"
+    ]
+}
