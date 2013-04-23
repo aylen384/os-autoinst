@@ -1005,6 +1005,7 @@ sub _waitforneedle {
 					$a->{'height'} = int($a->{'height'} * $ys);
 				}
 			}
+			$newname = $needle->{'name'};
 			$needle->save($fn);
 		} elsif ($r =~ /^q/i) {
 			$args{'retried'} = 99;
