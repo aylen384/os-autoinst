@@ -588,7 +588,7 @@ sub power($) {
 
 sub do_take_screenshot() {
         my $ret = $backend->screendump();
-	return $ret->scale(800, 600);
+	return $ret;
 }
 
 sub timeout_screenshot() {
@@ -657,7 +657,7 @@ sub take_screenshot(;$) {
 		$lastscreenshot = $img;
 		$lastscreenshotName = $filename;
 		$lastscreenshotCount = 0;
-		my $ocr=get_ocr($img);
+		#my $ocr=get_ocr($img);
 		#if($ocr) { diag "ocr: $ocr" }
 	}
 }
@@ -894,9 +894,8 @@ sub _waitforneedle {
 	my $needles;
 	if (ref($mustmatch) eq "ARRAY") {
 		$needles = $mustmatch;
-		$mustmatch = '';
 		for my $n (@{$needles}) {
-			$mustmatch .= $n->{name} . " ";
+			$mustmatch .= $n->{name} . "_";
 		}
 	} elsif ($mustmatch) {
 		$needles = needle::tags($mustmatch) || [];
@@ -910,11 +909,15 @@ sub _waitforneedle {
 	my $img = getcurrentscreenshot();
 	my $oldimg;
 	for my $n (1..$timeout) {
+		if (-e "waitneedlefail") {
+			unlink("waitneedlefail");
+			last;
+		}
 		if ($oldimg) {
 			sleep 1;
 			$img = getcurrentscreenshot();
 			if ($oldimg == $img) { # no change, no need to search
-				print "no change $n\n";
+				printf "no change %d\n", $timeout-$n;
 				next;
 			}
 		}
@@ -944,8 +947,8 @@ sub _waitforneedle {
 		diag $_->{'file'};
 	}
 	my $t = time();
-	$img->write_optimized(result_dir() . "/$mustmatch-$t.png");
-	my $fn = result_dir() . "/$mustmatch-$t.json";
+	$img->write_optimized(result_dir() . "/template-$mustmatch-$t.png");
+	my $fn = result_dir() . "/template-$mustmatch-$t.json";
 	open(J, ">", $fn) or die "$fn: $!\n";
 	my $json = { area => [ { xpos => 0, ypos => 0, width => $img->xres(), height => $img->yres(), type => 'match' } ] };
 	my @tags = ( $mustmatch );
@@ -958,9 +961,61 @@ sub _waitforneedle {
 	close(J);
 	diag("wrote $fn");
 
+	# beware of spaghetti code below
+	my $newname;
+	if ($ENV{'scaledhack'}) {
+		my $needle;
+		for my $t (qw/.1 .2 .3 .4 .5 .6/) {
+			diag("trying to find needle with threshold $t ...");
+			my $foundneedle = $img->search($needles, $t);
+			next unless $foundneedle;
+			fctres(sprintf("found %s, similarity %.2f @ %d/%d",
+					$foundneedle->{'needle'}->{'name'},
+					$foundneedle->{'similarity'},
+					$foundneedle->{'x'}, $foundneedle->{'y'}));
+			$needle = $foundneedle->{'needle'};
+			last;
+		}
+
+		for my $i (1..@{$needles||[]}) {
+			printf "%d - %s\n", $i, $needles->[$i-1]->{'name'};
+		}
+		print "note: called from checkneedle()\n" if $args{'check'};
+		print "(E)dit, (N)ew, (Q)uit, (C)ontinue\n";
+		my $r = <STDIN>;
+		if ($r =~ /^(\d+)/) {
+			$r = 'e';
+			$needle = $needles->[$1-1];
+		}
+		if ($r =~ /^e/i) {
+			unless ($needle) {
+				$needle = $needles->[0] if $needles;
+				die "no needle\n" unless $needle;
+			}
+			my $x = $needle->{'img'}->xres();
+			my $y = $needle->{'img'}->yres();
+			# scale needle coordinates to screenshot size
+			# XXX: this modifies the needle object in memory but we don't care for now
+			if ($x != $img->xres() && $y != $img->yres()) {
+				my $xs = $img->xres() / $x;
+				my $ys = $img->yres() / $y;
+				for my $a (@{$needle->{'area'}}) {
+					$a->{'xpos'} = int($a->{'xpos'} * $xs);
+					$a->{'width'} = int($a->{'width'} * $xs);
+					$a->{'ypos'} = int($a->{'ypos'} * $ys);
+					$a->{'height'} = int($a->{'height'} * $ys);
+				}
+			}
+			$newname = $needle->{'name'};
+			$needle->save($fn);
+		} elsif ($r =~ /^q/i) {
+			$args{'retried'} = 99;
+		}
+	}
+
 	$args{'retried'} ||= 0;
 	if (!$args{'check'} && $ENV{'interactive_crop'} && $args{'retried'} < 3) {
-		my $newname = $mustmatch.($ENV{'interactive_crop'} || '');
+		$newname = $mustmatch.($ENV{'interactive_crop'} || '') unless $newname;
 		system("$scriptdir/crop.py", '--new', $newname, $fn) == 0 || mydie;
 		# FIXME: kill needle with same file name
 		$fn = sprintf("%s/needles/%s.json", $ENV{'CASEDIR'}, $newname)

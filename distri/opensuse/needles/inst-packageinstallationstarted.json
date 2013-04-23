@@ -1,15 +1,15 @@
 {
     "area": [
         {
-            "height": 370,
+            "height": 70,
+            "match": 93,
             "type": "match",
-            "width": 685,
+            "width": 1024,
             "xpos": 0,
             "ypos": 0
         }
     ],
     "tags": [
-        "grub2",
-        "reboot-after-installation"
+        "inst-packageinstallationstarted"
     ]
 }
