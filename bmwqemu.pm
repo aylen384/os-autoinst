@@ -588,7 +588,7 @@ sub power($) {
 
 sub do_take_screenshot() {
         my $ret = $backend->screendump();
-	return $ret->scale(800, 600);
+	return $ret;
 }
 
 sub timeout_screenshot() {
