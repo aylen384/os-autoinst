@@ -1,15 +1,15 @@
 {
-   "area" : [
-      {
-         "width" : 800,
-         "xpos" : 0,
-         "type" : "match",
-         "ypos" : 0,
-         "height" : 505
-      }
-   ],
-   "tags" : [
-      "grub2",
-      "reboot-after-installation"
-   ]
+    "area": [
+        {
+            "height": 370,
+            "type": "match",
+            "width": 685,
+            "xpos": 0,
+            "ypos": 0
+        }
+    ],
+    "tags": [
+        "grub2",
+        "reboot-after-installation"
+    ]
 }
