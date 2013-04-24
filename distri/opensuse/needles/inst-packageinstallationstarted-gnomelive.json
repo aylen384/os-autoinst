@@ -1,19 +1,25 @@
 {
-   "area" : [
-      {
-         "width" : 145,
-         "xpos" : 0,
-         "type" : "match",
-         "ypos" : 0,
-         "height" : 175
-      }
-   ],
-   "tags" : [
-      "inst-packageinstallationstarted",
-      "ENV-VIDEOMODE-text",
-      "ENV-DESKTOP-gnome",
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US",
-      "ENV-LIVECD-1"
-   ]
+    "area": [
+        {
+            "height": 343,
+            "type": "match",
+            "width": 1019,
+            "xpos": 5,
+            "ypos": 10
+        },
+        {
+            "height": 245,
+            "type": "exclude",
+            "width": 365,
+            "xpos": 240,
+            "ypos": 85
+        }
+    ],
+    "tags": [
+        "inst-packageinstallationstarted",
+        "ENV-DESKTOP-gnome",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US",
+        "ENV-LIVECD-1"
+    ]
 }
