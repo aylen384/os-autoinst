@@ -1,21 +1,20 @@
 {
     "area": [
         {
-            "height": 550,
+            "height": 704,
             "type": "match",
-            "width": 800,
+            "width": 1024,
             "xpos": 0,
             "ypos": 0
         },
         {
-            "height": 25,
+            "height": 32,
             "type": "exclude",
-            "width": 100,
-            "xpos": 350,
+            "width": 128,
+            "xpos": 448,
             "ypos": 0
         }
     ],
-    "matches": 98,
     "tags": [
         "GNOME",
         "desktop-at-first-boot",
