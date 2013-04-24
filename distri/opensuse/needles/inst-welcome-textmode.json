@@ -1,18 +1,18 @@
 {
-   "area" : [
-      {
-         "width" : 800,
-         "xpos" : 0,
-         "type" : "match",
-         "ypos" : 0,
-         "height" : 600
-      }
-   ],
-   "tags" : [
-      "inst-welcome",
-      "languagepicked",
-      "ENV-VIDEOMODE-text",
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US"
-   ]
+    "area": [
+        {
+            "height": 763,
+            "type": "match",
+            "width": 1024,
+            "xpos": 0,
+            "ypos": 5
+        }
+    ],
+    "tags": [
+        "inst-welcome",
+        "languagepicked",
+        "ENV-VIDEOMODE-text",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US"
+    ]
 }
