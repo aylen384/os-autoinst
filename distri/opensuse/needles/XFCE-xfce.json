@@ -1,18 +1,25 @@
 {
-   "area" : [
-      {
-         "width" : 800,
-         "xpos" : 0,
-         "type" : "match",
-         "ypos" : 0,
-         "height" : 600
-      }
-   ],
-   "tags" : [
-      "XFCE",
-      "desktop-at-first-boot",
-      "ENV-DESKTOP-xfce",
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US"
-   ]
+    "area": [
+        {
+            "height": 765,
+            "type": "match",
+            "width": 1015,
+            "xpos": 0,
+            "ypos": 0
+        },
+        {
+            "height": 25,
+            "type": "exclude",
+            "width": 50,
+            "xpos": 800,
+            "ypos": 740
+        }
+    ],
+    "tags": [
+        "XFCE",
+        "desktop-at-first-boot",
+        "ENV-DESKTOP-xfce",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US"
+    ]
 }
