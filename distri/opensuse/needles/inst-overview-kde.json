@@ -1,16 +1,16 @@
 {
-   "area" : [
-      {
-         "width" : 310,
-         "xpos" : 155,
-         "type" : "match",
-         "ypos" : 180,
-         "height" : 45
-      }
-   ],
-   "tags" : [
-      "inst-overview",
-      "ENV-DESKTOP-kde",
-      "ENV-LIVECD-0"
-   ]
+    "area": [
+        {
+            "height": 57,
+            "type": "match",
+            "width": 396,
+            "xpos": 268,
+            "ypos": 315
+        }
+    ],
+    "tags": [
+        "inst-overview",
+        "ENV-DESKTOP-kde",
+        "ENV-LIVECD-0"
+    ]
 }

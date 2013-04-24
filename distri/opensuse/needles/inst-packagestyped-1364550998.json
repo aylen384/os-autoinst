@@ -1,14 +1,14 @@
 {
-   "area" : [
-      {
-         "width" : 800,
-         "xpos" : 0,
-         "type" : "match",
-         "ypos" : 40,
-         "height" : 165
-      }
-   ],
-   "tags" : [
-      "inst-packagestyped"
-   ]
+    "area": [
+        {
+            "height": 51,
+            "type": "match",
+            "width": 709,
+            "xpos": 0,
+            "ypos": 141
+        }
+    ],
+    "tags": [
+        "inst-packagestyped"
+    ]
 }
