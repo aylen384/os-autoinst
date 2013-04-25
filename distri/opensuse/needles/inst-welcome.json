@@ -1,15 +1,17 @@
 {
-    "area": [
-        {
-            "height": 120,
-            "type": "match",
-            "width": 393,
-            "xpos": 253,
-            "ypos": 5
-        }
-    ],
-    "tags": [
-        "languagepicked",
-        "inst-welcome"
-    ]
+   "area" : [
+      {
+         "height" : 120,
+         "type" : "match",
+         "width" : 393,
+         "xpos" : 253,
+         "ypos" : 5
+      }
+   ],
+   "tags" : [
+      "languagepicked",
+      "inst-welcome",
+      "welcome-1",
+      "welcome-2"
+   ]
 }

@@ -1,17 +1,18 @@
 {
    "area" : [
       {
+         "height" : 310,
+         "type" : "match",
          "width" : 610,
          "xpos" : 0,
-         "type" : "match",
-         "ypos" : 0,
-         "height" : 310
+         "ypos" : 0
       }
    ],
    "tags" : [
       "inst-bootmenu",
       "ENV-DESKTOP-kde",
       "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US"
+      "ENV-INSTLANG-en_US",
+      "bootloader-1"
    ]
 }

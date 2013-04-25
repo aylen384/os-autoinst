@@ -1,16 +1,17 @@
 {
-    "area": [
-        {
-            "height": 185,
-            "type": "match",
-            "width": 445,
-            "xpos": 290,
-            "ypos": 290
-        }
-    ],
-    "tags": [
-        "rebootnow",
-        "ENV-DESKTOP-kde",
-        "ENV-LIVECD-1"
-    ]
+   "area" : [
+      {
+         "height" : 185,
+         "type" : "match",
+         "width" : 445,
+         "xpos" : 290,
+         "ypos" : 290
+      }
+   ],
+   "tags" : [
+      "rebootnow",
+      "ENV-DESKTOP-kde",
+      "ENV-LIVECD-1",
+      "livecdreboot-1"
+   ]
 }

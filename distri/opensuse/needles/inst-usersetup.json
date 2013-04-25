@@ -1,15 +1,17 @@
 {
-    "area": [
-        {
-            "height": 762,
-            "type": "match",
-            "width": 775,
-            "xpos": 248,
-            "ypos": 5
-        }
-    ],
-    "tags": [
-        "inst-usersetup",
-        "after-paritioning"
-    ]
+   "area" : [
+      {
+         "height" : 762,
+         "type" : "match",
+         "width" : 775,
+         "xpos" : 248,
+         "ypos" : 5
+      }
+   ],
+   "tags" : [
+      "inst-usersetup",
+      "after-paritioning",
+      "partitioning_finish-1",
+      "user_settings-1"
+   ]
 }

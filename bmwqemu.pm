@@ -917,15 +917,13 @@ sub _waitforneedle {
 		my $foundneedle = $img->search($needles);
 		if ($foundneedle) {
 			my $t = time();
-			if (!$current_test) {
-				diag("current_test for $mustmatch is not defined");
-				exit(1);
-			}
-			my $name = $current_test->take_screenshot();
-			if (!$foundneedle->{needle}->has_tag($name)) {
+			if ($current_test) {
+			  my $name = $current_test->take_screenshot();
+			  if (!$foundneedle->{needle}->has_tag($name)) {
 				diag(sprintf("add name %s to $foundneedle->{needle}->{name}", $name));
 				push(@{$foundneedle->{needle}->{tags}}, $name);
 				$foundneedle->{needle}->save();
+			  }
 			}
 			fctres(sprintf("found %s, similarity %.2f @ %d/%d",
 				$foundneedle->{'needle'}->{'name'},
@@ -1039,6 +1037,8 @@ sub _waitforneedle {
 			return waitforneedle($mustmatch, 3, $args{'check'}, $args{'retried'}+1);
 		}
 	}
+	
+	$current_test->take_screenshot() if ($current_test);
 	mydie unless $args{'check'};
 	return undef;
 }
