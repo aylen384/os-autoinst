@@ -1,16 +1,16 @@
 {
-   "area" : [
-      {
-         "width" : 220,
-         "xpos" : 375,
-         "type" : "match",
-         "ypos" : 300,
-         "height" : 15
-      }
-   ],
-   "tags" : [
-      "rootpwdisabled",
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US"
-   ]
+    "area": [
+        {
+            "height": 19,
+            "type": "match",
+            "width": 296,
+            "xpos": 475,
+            "ypos": 384
+        }
+    ],
+    "tags": [
+        "rootpwdisabled",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US"
+    ]
 }
