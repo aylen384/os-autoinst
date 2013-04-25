@@ -1,16 +1,17 @@
 {
     "area": [
         {
-            "height": 38,
+            "height": 63,
             "type": "match",
-            "width": 199,
-            "xpos": 325,
-            "ypos": 320
+            "width": 254,
+            "xpos": 25,
+            "ypos": 370
         }
     ],
     "tags": [
-        "autologindisabled",
+        "inst-overview",
         "ENV-VIDEOMODE-text",
+        "ENV-DESKTOP-gnome",
         "ENV-DISTRI-opensuse",
         "ENV-INSTLANG-en_US"
     ]
