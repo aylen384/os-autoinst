@@ -13,6 +13,13 @@
             "width": 50,
             "xpos": 800,
             "ypos": 740
+        },
+        {
+            "height": 370,
+            "type": "exclude",
+            "width": 130,
+            "xpos": 0,
+            "ypos": 320
         }
     ],
     "tags": [
