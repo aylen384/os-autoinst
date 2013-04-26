@@ -38,7 +38,7 @@ sub next_resultname($;$) {
 	my $path=result_dir;
 	my $testname=ref($self);
 	if ($name) {
-		return "$path/$testname.$name.$type";
+		return "$path/$testname-$name.$type";
 	} else {
 		my $count=++$self->{$type."_count"};
 		return "$path/$testname-$count.$type";
@@ -58,7 +58,7 @@ sub take_screenshot(;$) {
 	my $testname=ref($self);
 	my $tag;
 	if ($name) {
-		$tag = "test-$testname.$name";
+		$tag = "test-$testname-$name";
 	} else {
 		$tag = "test-$testname-$count";
 	}

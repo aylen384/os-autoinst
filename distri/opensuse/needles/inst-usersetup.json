@@ -11,7 +11,7 @@
    "tags" : [
       "after-paritioning",
       "inst-usersetup",
-      "test-partitioning_finish.after-paritioning",
-      "test-user_settings.inst-usersetup"
+      "test-partitioning_finish-after-paritioning",
+      "test-user_settings-inst-usersetup"
    ]
 }

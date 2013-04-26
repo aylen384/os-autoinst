@@ -13,8 +13,8 @@
       "before-package-selection",
       "desktop-selection",
       "inst-returned-to-yast",
-      "test-installer_desktopselection.desktop-selection",
-      "test-logpackages.before-package-selection",
-      "test-logpackages.inst-returned-to-yast"
+      "test-installer_desktopselection-desktop-selection",
+      "test-logpackages-before-package-selection",
+      "test-logpackages-inst-returned-to-yast"
    ]
 }

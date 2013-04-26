@@ -13,6 +13,6 @@
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
       "gnome-imagesused",
-      "test-start_install.gnome-imagesused"
+      "test-start_install-gnome-imagesused"
    ]
 }

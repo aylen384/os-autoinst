@@ -13,6 +13,6 @@
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
       "inst-overview",
-      "test-installation_overview.inst-overview"
+      "test-installation_overview-inst-overview"
    ]
 }

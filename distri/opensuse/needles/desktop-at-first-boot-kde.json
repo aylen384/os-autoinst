@@ -21,6 +21,6 @@
       "KDE",
       "desktop-at-first-boot",
       "reboot-after-installation",
-      "test-livecdreboot.desktop-at-first-boot"
+      "test-livecdreboot-desktop-at-first-boot"
    ]
 }
