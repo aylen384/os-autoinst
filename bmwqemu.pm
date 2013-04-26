@@ -362,7 +362,7 @@ sub sendkey($) {
 	$backend->sendkey($key);
 	my @t=gettimeofday();
 	push(@keyhistory, [$t[0]*1000000+$t[1], $key]);
-	sleep(0.05);
+	sleep(0.1);
 }
 
 =head2 sendkeyw
@@ -399,7 +399,7 @@ sub sendautotype($;$) {
 			$typedchars=0;
 		}
 	}
-	waitstillimage(1) if ($typedchars > 0);
+	waitstillimage(1.6) if ($typedchars > 0);
 }
 
 sub sendpassword() {
@@ -748,7 +748,7 @@ sub waitstillimage(;$$$) {
 	my $similarity_level=shift||47;
 	my $starttime=time;
 	fctlog('waitstillimage', "stilltime=$stilltime", "timeout=$timeout", "simlvl=$similarity_level");
-        my $lastchangetime=time;	
+        my $lastchangetime=[gettimeofday];
         my $lastchangeimg = getcurrentscreenshot();
 	while(time-$starttime<$timeout) {
 	        my $img=getcurrentscreenshot();
@@ -758,7 +758,8 @@ sub waitstillimage(;$$$) {
 			$lastchangetime=time;
 			$lastchangeimg=$img;
 		}
-		if (time-$lastchangetime>=$stilltime) {
+		my $now = [gettimeofday];
+		if (($now->[0] - $lastchangetime->[0])+($now->[1] - $lastchangetime->[1])/1000000.>=$stilltime) {
 				fctres('waitstillimage', "detected same image for $stilltime seconds");
 				return 1;
 		}
