@@ -12,6 +12,6 @@
       "ENV-DESKTOP-kde",
       "ENV-LIVECD-0",
       "inst-overview",
-      "test-installation_overview.inst-overview"
+      "test-installation_overview-inst-overview"
    ]
 }

@@ -12,6 +12,6 @@
       "ENV-DESKTOP-kde",
       "ENV-LIVECD-1",
       "rebootnow",
-      "test-livecdreboot.rebootnow"
+      "test-livecdreboot-rebootnow"
    ]
 }
