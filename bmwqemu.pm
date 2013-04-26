@@ -755,7 +755,7 @@ sub waitstillimage(;$$$) {
 		my $sim = $img->similarity($lastchangeimg);
 		if ($sim < $similarity_level) {
 			# a change
-			$lastchangetime=time;
+			$lastchangetime=[gettimeofday];
 			$lastchangeimg=$img;
 		}
 		my $now = [gettimeofday];
