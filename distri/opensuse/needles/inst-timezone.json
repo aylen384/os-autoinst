@@ -10,7 +10,7 @@
    ],
    "tags" : [
       "inst-timezone",
-      "installation_mode-2",
-      "installer_timezone-1"
+      "test-installation_mode.inst-timezone",
+      "test-installer_timezone.inst-timezone"
    ]
 }

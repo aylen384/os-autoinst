@@ -9,9 +9,9 @@
       }
    ],
    "tags" : [
-      "inst-overview",
       "ENV-DESKTOP-kde",
       "ENV-LIVECD-0",
-      "installation_overview-1"
+      "inst-overview",
+      "test-installation_overview.inst-overview"
    ]
 }

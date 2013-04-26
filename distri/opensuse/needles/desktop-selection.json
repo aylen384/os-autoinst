@@ -10,11 +10,11 @@
    ],
    "tags" : [
       "before-package-selection",
-      "inst-returned-to-yast",
-      "desktop-selection",
       "before-package-selection",
-      "logpackages-1",
-      "logpackages-5",
-      "installer_desktopselection-1"
+      "desktop-selection",
+      "inst-returned-to-yast",
+      "test-installer_desktopselection.desktop-selection",
+      "test-logpackages.before-package-selection",
+      "test-logpackages.inst-returned-to-yast"
    ]
 }

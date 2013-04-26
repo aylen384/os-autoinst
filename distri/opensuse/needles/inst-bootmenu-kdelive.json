@@ -9,10 +9,10 @@
       }
    ],
    "tags" : [
-      "inst-bootmenu",
       "ENV-DESKTOP-kde",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "bootloader-1"
+      "inst-bootmenu",
+      "test-bootloader.inst-bootmenu"
    ]
 }

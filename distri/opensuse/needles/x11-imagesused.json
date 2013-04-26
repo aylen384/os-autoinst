@@ -1,17 +1,16 @@
 {
-   "area" : [
-      {
-         "height" : 30,
-         "type" : "match",
-         "width" : 255,
-         "xpos" : 290,
-         "ypos" : 250
-      }
-   ],
-   "tags" : [
-      "x11-imagesused",
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US",
-      "start_install-3"
-   ]
+    "area": [
+        {
+            "height": 30,
+            "type": "match",
+            "width": 255,
+            "xpos": 290,
+            "ypos": 250
+        }
+    ],
+    "tags": [
+        "x11-imagesused",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US"
+    ]
 }

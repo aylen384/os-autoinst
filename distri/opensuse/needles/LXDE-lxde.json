@@ -1,27 +1,25 @@
 {
-   "area" : [
-      {
-         "height" : 768,
-         "type" : "match",
-         "width" : 1024,
-         "xpos" : 0,
-         "ypos" : 0
-      },
-      {
-         "height" : 25,
-         "type" : "exclude",
-         "width" : 50,
-         "xpos" : 950,
-         "ypos" : 740
-      }
-   ],
-   "tags" : [
-      "LXDE",
-      "desktop-at-first-boot",
-      "ENV-DESKTOP-lxde",
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US",
-      "livecdreboot-4",
-      "livecdreboot-6"
-   ]
+    "area": [
+        {
+            "height": 768,
+            "type": "match",
+            "width": 1024,
+            "xpos": 0,
+            "ypos": 0
+        },
+        {
+            "height": 25,
+            "type": "exclude",
+            "width": 50,
+            "xpos": 950,
+            "ypos": 740
+        }
+    ],
+    "tags": [
+        "LXDE",
+        "desktop-at-first-boot",
+        "ENV-DESKTOP-lxde",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US"
+    ]
 }

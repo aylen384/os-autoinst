@@ -9,10 +9,10 @@
       }
    ],
    "tags" : [
-      "inst-overview",
       "ENV-DESKTOP-gnome",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "installation_overview-1"
+      "inst-overview",
+      "test-installation_overview.inst-overview"
    ]
 }

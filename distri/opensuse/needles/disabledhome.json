@@ -9,9 +9,9 @@
       }
    ],
    "tags" : [
-      "disabledhome",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "partitioning-2"
+      "disabledhome",
+      "test-partitioning.disabledhome"
    ]
 }

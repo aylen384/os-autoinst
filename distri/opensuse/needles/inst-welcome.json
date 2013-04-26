@@ -9,9 +9,9 @@
       }
    ],
    "tags" : [
-      "languagepicked",
       "inst-welcome",
-      "welcome-1",
-      "welcome-2"
+      "languagepicked",
+      "test-welcome.inst-welcome_inst-betawarning_",
+      "test-welcome.languagepicked"
    ]
 }

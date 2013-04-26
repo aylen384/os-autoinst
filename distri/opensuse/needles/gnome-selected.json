@@ -9,10 +9,10 @@
       }
    ],
    "tags" : [
-      "gnome-selected",
       "ENV-DESKTOP-gnome",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "installer_desktopselection-2"
+      "gnome-selected",
+      "test-installer_desktopselection.gnome-selected"
    ]
 }

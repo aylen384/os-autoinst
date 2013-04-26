@@ -9,9 +9,9 @@
       }
    ],
    "tags" : [
-      "rebootnow",
       "ENV-DESKTOP-kde",
       "ENV-LIVECD-1",
-      "livecdreboot-1"
+      "rebootnow",
+      "test-livecdreboot.rebootnow"
    ]
 }

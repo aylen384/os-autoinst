@@ -9,10 +9,10 @@
       }
    ],
    "tags" : [
-      "kde-imagesused",
       "ENV-DESKTOP-kde",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "start_install-3"
+      "kde-imagesused",
+      "test-start_install.kde-imagesused"
    ]
 }

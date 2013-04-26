@@ -11,8 +11,7 @@
    "tags" : [
       "grub2",
       "reboot-after-installation",
-      "livecdreboot-2",
-      "livecdreboot-3",
-      "livecdreboot-4"
+      "test-livecdreboot.grub2",
+      "test-livecdreboot.reboot-after-installation"
    ]
 }

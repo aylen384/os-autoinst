@@ -9,10 +9,10 @@
       }
    ],
    "tags" : [
-      "gnome-imagesused",
       "ENV-DESKTOP-gnome",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "start_install-3"
+      "gnome-imagesused",
+      "test-start_install.gnome-imagesused"
    ]
 }

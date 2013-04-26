@@ -17,11 +17,10 @@
       }
    ],
    "tags" : [
-      "desktop-at-first-boot",
-      "KDE",
-      "reboot-after-installation",
       "ENV-DESKTOP-kde",
-      "livecdreboot-4",
-      "livecdreboot-6"
+      "KDE",
+      "desktop-at-first-boot",
+      "reboot-after-installation",
+      "test-livecdreboot.desktop-at-first-boot"
    ]
 }

@@ -11,8 +11,8 @@
       }
    ],
    "tags" : [
-      "inst-bootmenu",
       "bootloader",
-      "bootloader-1"
+      "inst-bootmenu",
+      "test-bootloader.inst-bootmenu"
    ]
 }

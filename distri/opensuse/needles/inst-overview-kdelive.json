@@ -9,11 +9,11 @@
       }
    ],
    "tags" : [
-      "inst-overview",
       "ENV-DESKTOP-kde",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
       "ENV-LIVECD-1",
-      "installation_overview-1"
+      "inst-overview",
+      "test-installation_overview.inst-overview"
    ]
 }

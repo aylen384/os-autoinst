@@ -16,11 +16,11 @@
       }
    ],
    "tags" : [
-      "GNOME",
-      "desktop-at-first-boot",
       "ENV-DESKTOP-gnome",
       "ENV-DISTRI-opensuse",
       "ENV-INSTLANG-en_US",
-      "livecdreboot-3"
+      "GNOME",
+      "desktop-at-first-boot",
+      "test-livecdreboot.desktop-at-first-boot"
    ]
 }

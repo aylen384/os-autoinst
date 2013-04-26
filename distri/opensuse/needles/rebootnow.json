@@ -9,8 +9,8 @@
       }
    ],
    "tags" : [
-      "rebootnow",
       "ENV-LIVECD-0",
-      "livecdreboot-1"
+      "rebootnow",
+      "test-livecdreboot.rebootnow"
    ]
 }

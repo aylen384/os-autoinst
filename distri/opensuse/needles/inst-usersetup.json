@@ -9,9 +9,9 @@
       }
    ],
    "tags" : [
-      "inst-usersetup",
       "after-paritioning",
-      "partitioning_finish-1",
-      "user_settings-1"
+      "inst-usersetup",
+      "test-partitioning_finish.after-paritioning",
+      "test-user_settings.inst-usersetup"
    ]
 }

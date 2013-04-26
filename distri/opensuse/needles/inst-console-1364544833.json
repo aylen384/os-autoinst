@@ -10,6 +10,6 @@
    ],
    "tags" : [
       "inst-console",
-      "logpackages-2"
+      "test-logpackages.inst-console"
    ]
 }
