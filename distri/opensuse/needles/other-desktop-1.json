@@ -1,17 +1,16 @@
 {
-   "area" : [
-      {
-         "height" : 198,
-         "type" : "match",
-         "width" : 424,
-         "xpos" : 265,
-         "ypos" : 455
-      }
-   ],
-   "tags" : [
-      "ENV-DISTRI-opensuse",
-      "ENV-INSTLANG-en_US",
-      "other-desktop",
-      "test-installer_desktopselection-other-desktop"
-   ]
+    "area": [
+        {
+            "height": 198,
+            "type": "match",
+            "width": 424,
+            "xpos": 265,
+            "ypos": 455
+        }
+    ],
+    "tags": [
+        "other-desktop",
+        "ENV-DISTRI-opensuse",
+        "ENV-INSTLANG-en_US"
+    ]
 }
