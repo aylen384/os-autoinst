@@ -162,7 +162,10 @@ sub _check_or_assert {
                 );
             }
             if (!$check) {
-                bmwqemu::mydie("needle(s) '$mustmatch' not found");
+                if (ref($mustmatch) eq 'ARRAY') {
+                    bmwqemu::mydie("needles \"". join(', ', @$mustmatch) ."\" not found");
+                }
+                bmwqemu::mydie("needle \"$mustmatch\" not found");
             }
             return;
         }
