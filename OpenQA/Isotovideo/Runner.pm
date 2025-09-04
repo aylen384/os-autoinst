@@ -136,6 +136,7 @@ sub handle_commands ($self) {
     # uncoverable statement count:3
     # uncoverable statement count:4
     $command_handler->on(signal => sub ($event, $sig) {
+            fctwarn::log("Runner command_handler signal $sig"); # uncoverable statement
             $self->backend->stop if defined $self->backend;    # uncoverable statement
             $self->stop_commands("received signal $sig");    # uncoverable statement
             $self->stop_autotest();    # uncoverable statement

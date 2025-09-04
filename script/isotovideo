@@ -79,6 +79,7 @@ C<--exit-status-from-test-results> flag.
 =cut
 
 use Mojo::Base -strict, -signatures;
+use Carp 'confess';
 use autodie ':all';
 no autodie 'kill';
 
@@ -195,9 +196,14 @@ catch ($e) {
 }
 
 END {
-    $runner->backend->stop if $runner and $runner->backend;
-    $runner and $runner->stop_commands('test execution ended through exception');
-    $runner and $runner->stop_autotest();
+    log::fctwarn("FOOBAR: END in isotovideo");
+    if ($runner) {
+        log::fctwarn("FOOBAR: END in isotovideo: runner is set");
+        log::fctwarn("FOOBAR: END in isotovideo: runner->backend is set") if $runner->backend;
+        $runner->backend->stop if $runner->backend;
+        $runner->stop_commands('test execution ended through exception');
+        $runner->stop_autotest();
+    }
     $RETURN_CODE //= 0;    # in case of early exit, e.g. help display
     print "$$: EXIT $RETURN_CODE\n";
     $? = $RETURN_CODE;

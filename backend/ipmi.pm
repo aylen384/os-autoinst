@@ -9,6 +9,7 @@ use Feature::Compat::Try;
 use Time::HiRes qw(sleep);
 use Time::Seconds;
 use IPC::Run ();
+use Carp qw(croak);
 require IPC::System::Simple;
 
 sub new ($class) {
@@ -44,7 +45,7 @@ sub ipmitool ($self, $cmd, %args) {
     chomp $stdout;
     chomp $stderr;
     # Output error message with ipmi password masked
-    die join(' ', map { $_ eq $bmwqemu::vars{IPMI_PASSWORD} ? "[masked]" : $_ } @cmd) . ": $stderr" unless ($ret);
+    croak join(' ', map { $_ eq $bmwqemu::vars{IPMI_PASSWORD} ? "[masked]" : $_ } @cmd) . ": $stderr" unless ($ret);
 
     bmwqemu::diag("IPMI: $stdout");
     return $stdout;
@@ -164,7 +165,8 @@ sub do_mc_reset ($self) {
         }
     }
 
-    die "IPMI mc reset failure after $max_tries tries! Exit...";
+    # HIER CLEANUP
+    croak "IPMI mc reset failure after $max_tries tries! Exit...";
 }
 
 1;

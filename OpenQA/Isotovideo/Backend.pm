@@ -24,6 +24,7 @@ sub process ($self) {
 }
 
 sub stop ($self) {
+    diag("called OpenQA::Isotovideo::Backend::stop()");
     return undef unless my $process = $self->process;
     diag('stopping backend process ' . $process->pid);
     $process->stop if $process->is_running;

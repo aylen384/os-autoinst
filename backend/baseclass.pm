@@ -84,6 +84,7 @@ sub handle_command ($self, $cmd) {
 }
 
 sub die_handler ($msg) {
+    bmwqemu::diag("backend/baseclass: die_handler($msg)");
     chomp($msg);
     bmwqemu::fctinfo "Backend process died, backend errors are reported below in the following lines:\n$msg";
     bmwqemu::serialize_state(component => 'backend', msg => $msg);
@@ -314,6 +315,7 @@ sub run_capture_loop ($self, $timeout = undef) {
     try { $self->do_capture($timeout, $starttime) }
     catch ($e) {
         bmwqemu::fctwarn "capture loop failed $e";
+        $self->do_stop_vm();
         $self->close_pipes();
     }
 }
