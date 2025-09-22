@@ -72,7 +72,7 @@ EOF
 
 configure_nftables() {
     rpm -q firewalld && systemctl disable --now firewalld
-    cat > /etc/systemd/system/nftables.service <<EOF
+    cat > /etc/systemd/system/nftables.service << EOF
 [Unit]
 Description=Apply firewall rules from /etc/firewall.nft
 After=network-online.target
@@ -88,7 +88,7 @@ RemainAfterExit=true
 ExecStart=/usr/sbin/nft -f /etc/firewall.nft
 ExecStop=/usr/sbin/nft flush ruleset
 EOF
-    cat > /etc/firewall.nft <<EOF
+    cat > /etc/firewall.nft << EOF
 #!/usr/sbin/nft -f
 
 # dump with "nft --stateless list ruleset"
@@ -196,7 +196,7 @@ main() {
     }
     ensure_ip_forwarding
     install_packages
-    configure_firewall
+    configure_nftables
     systemctl enable --now openvswitch
     case "$network" in
         wicked)
